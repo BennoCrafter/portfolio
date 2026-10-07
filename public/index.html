@@ -13,6 +13,11 @@
             rel="stylesheet"
         />
         <link rel="stylesheet" href="css/styles.css" />
+        <link rel="manifest" href="manifest.webmanifest" />
+        <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+        <meta name="theme-color" content="#F5E5D6" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-title" content="Bennowo" />
     </head>
     <body onload="typeWriter()">
         <!-- Menu Bar -->
@@ -42,9 +47,10 @@
         <footer>2026</footer>
 
         <script src="scripts/socials.js"></script>
+        <script src="scripts/sw-register.js"></script>
         <script>
             var i = 0;
-            var txt = "a hobby developer who loves to code";
+            var txt = "a hobby developer who loves to code.";
             var speed = 25;
 
             function typeWriter() {
