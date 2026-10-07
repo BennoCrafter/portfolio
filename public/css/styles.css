@@ -148,7 +148,6 @@ nav ul li a:hover {
     box-shadow:
         0 0 0 8px var(--paper),
         0 0 0 10px var(--ink);
-    transform: rotate(-4deg);
 }
 
 .avatar-stamp--small {
