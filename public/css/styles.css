@@ -143,6 +143,7 @@ nav ul li a:hover {
     font-size: 84px;
     color: var(--ink);
     background: var(--paper-dark);
+    object-fit: cover;
     border: 3px double var(--ink);
     box-shadow:
         0 0 0 8px var(--paper),
