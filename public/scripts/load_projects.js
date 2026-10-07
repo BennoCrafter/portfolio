@@ -1,47 +1,43 @@
+const PLACEHOLDER_IMG =
+    "data:image/svg+xml," +
+    encodeURIComponent(
+        '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300">' +
+            '<rect width="100%" height="100%" fill="#e2d3b3"/>' +
+            '<rect x="8" y="8" width="384" height="284" fill="none" stroke="#2b2420" stroke-width="3" stroke-dasharray="10 6"/>' +
+            '<text x="50%" y="52%" font-family="Georgia, serif" font-size="22" fill="#2b2420" text-anchor="middle">NO PHOTO</text>' +
+            '<text x="50%" y="64%" font-family="Georgia, serif" font-size="13" fill="#5c4f42" text-anchor="middle">on file</text>' +
+            "</svg>",
+    );
+
 async function loadProjects() {
-  try {
-    const response = await fetch("/data/projects.json");
-    const data = await response.json();
-    const projectsGrid = document.querySelector(".projects-grid");
+    try {
+        const response = await fetch("/data/projects.json");
+        const data = await response.json();
+        const projectsGrid = document.querySelector(".projects-grid");
 
-    // Clear existing content
-    projectsGrid.innerHTML = "";
+        projectsGrid.innerHTML = "";
 
-    // Add each project to the grid
-    data.projects.forEach((project) => {
-      const projectCard = createProjectCard(project);
-      projectsGrid.appendChild(projectCard);
-    });
-  } catch (error) {
-    console.error("Error loading projects:", error);
-  }
+        data.projects.forEach((project) => {
+            const projectCard = createProjectCard(project);
+            projectsGrid.appendChild(projectCard);
+        });
+    } catch (error) {
+        console.error("Error loading projects:", error);
+    }
 }
 
 function createProjectCard(project) {
-  const card = document.createElement("div");
-  card.className = "project-card";
+    const card = document.createElement("div");
+    card.className = "project-card";
 
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const hasLive = Boolean(project.links.live);
+    const linkIcon = `<svg class="external-link-icon" viewBox="0 0 24 24" width="16" height="16">
+        <path fill="currentColor" d="M21 13v7a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h7v2H5v14h14v-6h2zm3-8h-6V3h6v2z"/>
+    </svg>`;
 
-  card.innerHTML = `
+    card.innerHTML = `
         <div class="project-image">
-            <img src="${project.image}" alt="${project.name}">
-            <div class="project-overlay ${isMobile ? "always-visible" : ""}">
-                <div class="project-links">
-                    <a href="${project.links.live}" class="project-link" target="_blank" rel="noopener noreferrer">
-                        View Project
-                        <svg class="external-link-icon" viewBox="0 0 24 24" width="16" height="16">
-                            <path fill="currentColor" d="M21 13v7a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h7v2H5v14h14v-6h2zm3-8h-6V3h6v2z"/>
-                        </svg>
-                    </a>
-                    <a href="${project.links.github}" class="project-link" target="_blank" rel="noopener noreferrer">
-                        GitHub
-                        <svg class="external-link-icon" viewBox="0 0 24 24" width="16" height="16">
-                            <path fill="currentColor" d="M21 13v7a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h7v2H5v14h14v-6h2zm3-8h-6V3h6v2z"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+            <img src="${project.image}" alt="${project.name}" onerror="this.onerror=null;this.src='${PLACEHOLDER_IMG}'">
         </div>
         <div class="project-content">
             <h3>${project.name}</h3>
@@ -49,20 +45,14 @@ function createProjectCard(project) {
             <div class="project-tags">
                 ${project.technologies.map((tech) => `<span>${tech}</span>`).join("")}
             </div>
-            ${
-              isMobile
-                ? `
-            <div class="mobile-project-links">
-                <a href="${project.links.live}" class="project-link" target="_blank" rel="noopener noreferrer">View Project</a>
-                <a href="${project.links.github}" class="project-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <div class="project-links">
+                ${hasLive ? `<a href="${project.links.live}" class="project-link" target="_blank" rel="noopener noreferrer">View Project ${linkIcon}</a>` : ""}
+                <a href="${project.links.github}" class="project-link" target="_blank" rel="noopener noreferrer">GitHub ${linkIcon}</a>
             </div>
-            `
-                : ""
-            }
         </div>
     `;
 
-  return card;
+    return card;
 }
 
 // Load projects when the page loads

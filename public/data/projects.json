@@ -3,8 +3,8 @@
     {
       "id": 1,
       "name": "Timetable Manager",
-      "description": "The ultimate app to plan your schedule, stay on top of tasks, and manage tests effortlessly.",
-      "image": "data/assets/Timetable/app-icon-prev.png",
+      "description": "The ultimate app to plan your schedule, stay on top of tasks, track grades, and manage tests effortlessly.",
+      "image": "data/assets/TimetableManager/app-icon-prev.png",
       "technologies": ["Swift"],
       "links": {
         "github": "https://github.com/BennoCrafter/Timetable",
@@ -26,7 +26,7 @@
       "id": 3,
       "name": "Matrix Poll Bot",
       "description": "A handy bot for creating and managing polls in Matrix rooms.",
-      "image": "assets/project3.jpg",
+      "image": "https://raw.githubusercontent.com/BennoCrafter/PollMatrixBot/main/assets/icon/icon_round.png",
       "technologies": ["Python", "simplematrixbotlib"],
       "links": {
         "github": "https://github.com/BennoCrafter/PollMatrixBot",
@@ -37,7 +37,7 @@
       "id": 4,
       "name": "TrackStar",
       "description": "Hitster-inspired open-source game, where players guess the release year of songs to create a chronological timeline with the ability to use your own custom datasets.",
-      "image": "assets/project3.jpg",
+      "image": "https://raw.githubusercontent.com/BennoCrafter/TrackStar/main/assets/screenshots/dataset/song_cards.png",
       "technologies": ["Python", "Swift"],
       "links": {
         "github": "https://github.com/bennocrafter/trackstar",
@@ -52,6 +52,72 @@
       "technologies": ["Python"],
       "links": {
         "github": "https://github.com/bennocrafter/observice",
+        "live": ""
+      }
+    },
+    {
+      "id": 6,
+      "name": "streamstats",
+      "description": "A local dashboard for your own Netflix and Prime Video streaming history: hours watched, money spent, and more.",
+      "image": "https://raw.githubusercontent.com/BennoCrafter/streamstats/main/resources/stats-preview-framed.png",
+      "technologies": ["Python"],
+      "links": {
+        "github": "https://github.com/BennoCrafter/streamstats",
+        "live": ""
+      }
+    },
+    {
+      "id": 7,
+      "name": "DataWorker",
+      "description": "A simple, local database for macOS, inspired by Bento.",
+      "image": "https://raw.githubusercontent.com/BennoCrafter/DataWorker/main/preview/preview-library.png",
+      "technologies": ["Deno", "TypeScript"],
+      "links": {
+        "github": "https://github.com/BennoCrafter/DataWorker",
+        "live": ""
+      }
+    },
+    {
+      "id": 8,
+      "name": "Schule Infoportal",
+      "description": "An improved website for schule-infoportal.de/infoscreen, showing substitutions and school news.",
+      "image": "https://raw.githubusercontent.com/BennoCrafter/schule-infoportal/main/assets/preview_substitution_week_view.png",
+      "technologies": ["TypeScript", "Next.js"],
+      "links": {
+        "github": "https://github.com/BennoCrafter/schule-infoportal",
+        "live": "https://schule-infoportal.vercel.app"
+      }
+    },
+    {
+      "id": 9,
+      "name": "Rummikub",
+      "description": "A terminal implementation of the tile-based game Rummikub for 2 to 4 players, combining elements of Rummy and Mahjong.",
+      "image": "",
+      "technologies": ["Python"],
+      "links": {
+        "github": "https://github.com/BennoCrafter/Rummikub",
+        "live": ""
+      }
+    },
+    {
+      "id": 10,
+      "name": "Framr",
+      "description": "Transform your favourite albums, movies, and series into stunning posters, perfect for upgrading your room.",
+      "image": "https://raw.githubusercontent.com/BennoCrafter/framr/refs/heads/main/public/icon.png",
+      "technologies": ["TypeScript", "Next.js"],
+      "links": {
+        "github": "https://github.com/BennoCrafter/Framr",
+        "live": ""
+      }
+    },
+    {
+      "id": 12,
+      "name": "GoFlow",
+      "description": "A desktop app for building visual layouts and dashboards out of widgets.",
+      "image": "https://raw.githubusercontent.com/BennoCrafter/GoFlow/main/preview-image.png",
+      "technologies": ["JavaScript", "Electron"],
+      "links": {
+        "github": "https://github.com/BennoCrafter/GoFlow",
         "live": ""
       }
     }

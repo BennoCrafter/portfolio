@@ -1,26 +1,93 @@
 <!doctype html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>About — Bennowo</title>
         <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap"
+            rel="icon"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%23efe4cd' stroke='%232b2420' stroke-width='6'/%3E%3Ctext x='50' y='68' font-size='58' font-family='Georgia,serif' font-weight='900' text-anchor='middle' fill='%23b1502f'%3EB%3C/text%3E%3C/svg%3E"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Lora:ital,wght@0,400;0,500;1,400&family=Special+Elite&display=swap"
             rel="stylesheet"
         />
         <link rel="stylesheet" href="css/styles.css" />
-        <script src="scripts/create_stars.js"></script>
     </head>
     <body>
-        <div class="stars"></div>
-
         <!-- Menu Bar -->
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="projects.html">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
+
+        <main class="page">
+            <h1 class="page-title">About</h1>
+
+            <section class="about-grid">
+                <div class="avatar-stamp avatar-stamp--small">B</div>
+                <div class="about-copy">
+                    <p>
+                        hey, i'm benno,
+                        a hobbyist programmer who has loved programming for almost his entire life.
+                    <p>
+                        it all ends up open source on github sooner or later.
+                    </p>
+                    <ul class="ticket-list">
+                        <li>builds iOS apps with Swift & SwiftUI</li>
+                        <li>writes small bots and tools in Python</li>
+                        <li>loves open source</li>
+                        <li>ships (almost) everything open source</li>
+                        <li>still learning a lot (currently about ml)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="tv-section">
+                <p class="tv-label">Now Showing</p>
+                <div class="tv-set">
+                    <div class="tv-antenna tv-antenna--left"></div>
+                    <div class="tv-antenna tv-antenna--right"></div>
+                    <div class="tv-frame">
+                        <div class="tv-screen" id="tv-screen">
+                            <img src="" id="tv-source" />
+                        </div>
+                        <div class="tv-dials">
+                            <div class="tv-light"></div>
+                            <div class="tv-dial"></div>
+                            <div class="tv-dial"></div>
+                        </div>
+                    </div>
+                </div>
+                <button class="zap-button" id="zap-button" type="button">Zap</button>
+            </section>
+        </main>
+
+        <footer>2026</footer>
     </body>
+
+    <script>
+    const gifList = ["angry-frog.gif", "cute-bunny.gif", "cute-dino.gif", "duck-dancing.gif", "malloon-cute.gif", "pato-baile.gif", "cute-chick.gif"]
+
+    const tvSource = document.getElementById("tv-source")
+    const tvScreen = document.getElementById("tv-screen")
+    let channel = Math.floor(Math.random() * gifList.length)
+
+    function tuneIn() {
+        tvSource.src = `assets/gifs/${gifList[channel]}`
+    }
+
+    function zap() {
+        channel = (channel + 1) % gifList.length
+        tvScreen.classList.add("is-zapping")
+        setTimeout(() => tvScreen.classList.remove("is-zapping"), 800)
+        setTimeout(tuneIn, 150)
+    }
+
+    document.getElementById("zap-button").addEventListener("click", zap)
+    tuneIn()
+    </script>
 </html>
