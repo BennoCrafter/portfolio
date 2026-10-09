@@ -55,5 +55,15 @@ function createProjectCard(project) {
     return card;
 }
 
+// Click a project image to show it enlarged
+document.addEventListener("click", (e) => {
+    const img = e.target.closest(".project-image img");
+    if (!img) return;
+    const lightbox = document.querySelector(".lightbox");
+    lightbox.querySelector("img").src = img.src;
+    lightbox.querySelector("img").alt = img.alt;
+    lightbox.showModal();
+});
+
 // Load projects when the page loads
 document.addEventListener("DOMContentLoaded", loadProjects);

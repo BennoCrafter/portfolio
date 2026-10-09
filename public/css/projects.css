@@ -183,3 +183,27 @@ body {
         font-size: 14px;
     }
 }
+
+.project-image img {
+    cursor: zoom-in;
+}
+
+.lightbox {
+    padding: 0;
+    border: 3px solid var(--ink);
+    background: var(--paper);
+    max-width: 92vw;
+    max-height: 92vh;
+    cursor: zoom-out;
+}
+
+.lightbox::backdrop {
+    background: rgb(0 0 0 / 0.75);
+}
+
+.lightbox img {
+    display: block;
+    max-width: 92vw;
+    max-height: 92vh;
+    object-fit: contain;
+}

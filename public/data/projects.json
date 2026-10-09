@@ -90,13 +90,13 @@
     },
     {
       "id": 9,
-      "name": "Rummikub",
-      "description": "A terminal implementation of the tile-based game Rummikub for 2 to 4 players, combining elements of Rummy and Mahjong.",
-      "image": "",
-      "technologies": ["Python"],
+      "name": "linkshelf",
+      "description": "Clean and simple URL bookmarking site.",
+      "image": "https://raw.githubusercontent.com/BennoCrafter/linkshelf/main/screenshots/light.png",
+      "technologies": [],
       "links": {
-        "github": "https://github.com/BennoCrafter/Rummikub",
-        "live": ""
+        "github": "https://github.com/BennoCrafter/linkshelf",
+        "live": "https://linkshelf-space.vercel.app"
       }
     },
     {
