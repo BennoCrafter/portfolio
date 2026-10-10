@@ -37,7 +37,7 @@ function createProjectCard(project) {
 
     card.innerHTML = `
         <div class="project-image">
-            <img src="${project.image}" alt="${project.name}" onerror="this.onerror=null;this.src='${PLACEHOLDER_IMG}'">
+            <img src="${project.image}"${project.imageFit ? ` style="object-fit:${project.imageFit}"` : ""} alt="${project.name}" onerror="this.onerror=null;this.src='${PLACEHOLDER_IMG}'">
         </div>
         <div class="project-content">
             <h3>${project.name}</h3>
@@ -46,7 +46,7 @@ function createProjectCard(project) {
                 ${project.technologies.map((tech) => `<span>${tech}</span>`).join("")}
             </div>
             <div class="project-links">
-                ${hasLive ? `<a href="${project.links.live}" class="project-link" target="_blank" rel="noopener noreferrer">View Project ${linkIcon}</a>` : ""}
+                ${hasLive ? `<a href="${project.links.live}" class="project-link" target="_blank" rel="noopener noreferrer">Live ${linkIcon}</a>` : ""}
                 <a href="${project.links.github}" class="project-link" target="_blank" rel="noopener noreferrer">GitHub ${linkIcon}</a>
             </div>
         </div>

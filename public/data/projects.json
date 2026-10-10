@@ -4,8 +4,9 @@
       "id": 1,
       "name": "Timetable Manager",
       "description": "The ultimate app to plan your schedule, stay on top of tasks, track grades, and manage tests effortlessly.",
-      "image": "data/assets/TimetableManager/app-icon-prev.png",
-      "technologies": ["Swift"],
+      "image": "data/assets/TimetableManager/dashboard-theme.png",
+      "imageFit": "contain",
+      "technologies": ["Swift", "SwiftUI", "sqlite-data"],
       "links": {
         "github": "https://github.com/BennoCrafter/Timetable",
         "live": "https://get-timetable.vercel.app"
@@ -18,8 +19,7 @@
       "image": "https://github.com/BennoCrafter/wallhaven-desktop/raw/main/assets/home.png",
       "technologies": ["Swift", "Kingfisher"],
       "links": {
-        "github": "https://github.com/BennoCrafter/wallhaven-desktop",
-        "live": "https://wallhaven.cc"
+        "github": "https://github.com/BennoCrafter/wallhaven-desktop"
       }
     },
     {
