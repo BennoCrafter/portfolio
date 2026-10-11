@@ -9,6 +9,11 @@ const socialConfig = [
     icon: "/assets/socials/github.svg",
     link: "https://github.com/BennoCrafter",
   },
+  {
+    name: "Ko-fi",
+    icon: "/assets/socials/kofi.svg",
+    link: "https://ko-fi.com/bennowo",
+  },
 ];
 
 // Create social buttons dynamically
