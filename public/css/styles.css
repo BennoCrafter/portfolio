@@ -1,10 +1,9 @@
 :root {
-    --paper:#F5E5D6;
-    --paper-dark: #E8D9CB ;
+    --paper: #F5E5D6;
+    --paper-dark: #E8D9CB;
     --ink: #1E293B;
     --ink-soft: #64748B;
-    --accent-1: #3B82F6;
-    --accent-2: #10B981;
+    --rust: #B1502F;
 }
 
 
@@ -561,3 +560,4 @@ footer {
         text-align: left;
     }
 }
+

@@ -1,11 +1,11 @@
-const CACHE = "bennowo-v3";
+const CACHE = "bennowo-v5";
 const SHELL = [
-    "index.html",
-    "about.html",
-    "projects.html",
-    "css/styles.css",
-    "css/projects.css",
-    "manifest.webmanifest",
+    "/",
+    "/about",
+    "/projects",
+    "/css/styles.css",
+    "/css/projects.css",
+    "/manifest.webmanifest",
 ];
 
 self.addEventListener("install", (e) => {
@@ -29,12 +29,16 @@ self.addEventListener("fetch", (e) => {
     e.respondWith(
         fetch(e.request)
             .then((res) => {
-                const copy = res.clone();
-                caches.open(CACHE).then((c) => c.put(e.request, copy));
+                if (res.ok) {
+                    const copy = res.clone();
+                    caches.open(CACHE).then((c) => c.put(e.request, copy));
+                }
                 return res;
             })
             .catch(() =>
-                caches.match(e.request).then((hit) => hit || caches.match("index.html")),
+                caches
+                    .match(e.request)
+                    .then((hit) => hit || (e.request.mode === "navigate" ? caches.match("/") : Response.error())),
             ),
     );
 });

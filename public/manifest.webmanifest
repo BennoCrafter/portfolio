@@ -1,8 +1,8 @@
 {
     "name": "Bennowo",
     "short_name": "Bennowo",
-    "start_url": "index.html",
-    "scope": "./",
+    "start_url": "/",
+    "scope": "/",
     "display": "standalone",
     "background_color": "#F5E5D6",
     "theme_color": "#F5E5D6",

@@ -4,6 +4,8 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>About — Bennowo</title>
+        <meta name="description" content="About Bennowo, a hobby developer building iOS apps, bots and tools." />
+        <link rel="canonical" href="https://www.bennowo.de/about" />
         <link
             rel="icon"
             href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%23efe4cd' stroke='%232b2420' stroke-width='6'/%3E%3Ctext x='50' y='68' font-size='58' font-family='Georgia,serif' font-weight='900' text-anchor='middle' fill='%23b1502f'%3EB%3C/text%3E%3C/svg%3E"
@@ -23,9 +25,9 @@
         <!-- Menu Bar -->
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="projects.html">Projects</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/projects">Projects</a></li>
             </ul>
         </nav>
 
@@ -37,14 +39,14 @@
                 <div class="about-copy">
                     <p>
                         hey, i'm benno,
-                        a hobbyist programmer who has loved programming for almost his entire life.
+                        a hobbyist programmer who has loved programming for almost my entire life.
+                    </p>
                     <p>
                         it all ends up open source on github sooner or later.
                     </p>
                     <ul class="ticket-list">
                         <li>builds iOS apps with Swift & SwiftUI</li>
                         <li>writes small bots and tools in Python</li>
-                        <li>loves open source</li>
                         <li>ships (almost) everything open source</li>
                         <li>still learning a lot (currently about ml)</li>
                     </ul>
@@ -58,7 +60,7 @@
                     <div class="tv-antenna tv-antenna--right"></div>
                     <div class="tv-frame">
                         <div class="tv-screen" id="tv-screen">
-                            <img src="" id="tv-source" />
+                            <img id="tv-source" alt="Random animated GIF" />
                         </div>
                         <div class="tv-dials">
                             <div class="tv-light"></div>
@@ -71,8 +73,7 @@
             </section>
         </main>
 
-        <footer>2026</footer>
-    </body>
+        <footer>© 2026 Bennowo · <a href="https://github.com/BennoCrafter" target="_blank" rel="noopener noreferrer">GitHub</a></footer>
 
     <script src="scripts/sw-register.js"></script>
     <script>
@@ -96,4 +97,5 @@
     document.getElementById("zap-button").addEventListener("click", zap)
     tuneIn()
     </script>
+    </body>
 </html>

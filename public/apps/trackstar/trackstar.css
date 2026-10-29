@@ -1,0 +1,226 @@
+/* TrackStar — vinyl, in the app's own colors */
+
+:root {
+    --bg: #1F1B2E;
+    --text: #F4F1EA;
+    --muted: #8A8799;
+    --line: #34304A;
+    --accent: #FFB020;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+}
+
+a {
+    color: inherit;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    padding: 20px 16px;
+    font-size: 14px;
+}
+
+nav a {
+    color: var(--muted);
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: var(--accent);
+}
+
+main {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 30px 16px 40px;
+}
+
+header {
+    text-align: center;
+}
+
+/* app icon; a double press turns it into a spinning record */
+.disc {
+    width: 220px;
+    height: 220px;
+    margin: 0 auto;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: transparent;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+
+.disc img {
+    width: 150px;
+    height: 150px;
+    border-radius: 34px;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+    transition: width 0.4s ease, height 0.4s ease, border-radius 0.4s ease;
+}
+
+.disc.vinyl {
+    background:
+        radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.12), transparent 40%),
+        repeating-radial-gradient(circle, #111 0 2px, #1a1a1a 2px 4px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    animation: spin 8s linear infinite;
+}
+
+.disc.vinyl img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    box-shadow: none;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .disc.vinyl { animation: none; }
+}
+
+h1 {
+    margin: 28px 0 8px;
+    font-size: 40px;
+    letter-spacing: -0.5px;
+}
+
+header p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.links {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.links a {
+    padding: 10px 20px;
+    border-radius: 999px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.links a:hover {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+section {
+    margin-top: 48px;
+}
+
+h2 {
+    margin: 0 0 8px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+li b {
+    width: 24px;
+    color: var(--muted);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+}
+
+.modes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.modes div {
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+}
+
+h3 {
+    margin: 0 0 6px;
+    font-size: 17px;
+}
+
+.modes p,
+.legal p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.legal p + p {
+    margin-top: 16px;
+}
+
+.legal address {
+    font-style: normal;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+@media (max-width: 480px) {
+    .modes {
+        grid-template-columns: 1fr;
+    }
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.cards img {
+    width: 100%;
+    display: block;
+    border-radius: 8px;
+}
+
+footer {
+    line-height: 2;
+    text-align: center;
+    padding: 20px 16px 40px;
+    font-size: 13px;
+    color: var(--muted);
+}

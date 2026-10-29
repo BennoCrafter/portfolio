@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>TrackStar — Bennowo</title>
+        <link rel="canonical" href="https://www.bennowo.de/apps/trackstar/" />
+        <meta name="description" content="TrackStar: an open-source Hitster-inspired music game for iOS." />
+        <link rel="icon" href="/apps/trackstar/icon.png" />
+        <link rel="apple-touch-icon" href="/apps/trackstar/icon.png" />
+        <link rel="stylesheet" href="/apps/trackstar/trackstar.css" />
+        <meta name="theme-color" content="#1F1B2E" />
+    </head>
+    <body>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/projects">Projects</a>
+        </nav>
+
+        <main>
+            <header>
+                <button class="disc" type="button" aria-label="TrackStar app icon. Double-press to flip to vinyl" aria-pressed="false">
+                    <img src="/apps/trackstar/icon.png" alt="" />
+                </button>
+                <h1>TrackStar</h1>
+                <p>Guess the release year. Build the timeline.<br />An open-source, Hitster-inspired music game for iPhone.</p>
+                <div class="links">
+                    <a href="https://github.com/BennoCrafter/TrackStar" target="_blank" rel="noopener noreferrer">▶ GitHub</a>
+                    <a href="https://discord.gg/JNu7qXGpzV" target="_blank" rel="noopener noreferrer">▶ Discord</a>
+                </div>
+            </header>
+
+            <section>
+                <h2>Side A · Two ways to play</h2>
+                <div class="modes">
+                    <div>
+                        <h3>With Cards</h3>
+                        <p>Scan a printed TrackStar card or an original German Hitster card. The song plays, you place it in your timeline, then flip the card to check.</p>
+                    </div>
+                    <div>
+                        <h3>No Cards</h3>
+                        <p>Nothing to print. Turn the phone sideways: it picks the songs and keeps everyone's timeline. Whoever recognizes a song places it: +1 if it fits, −1 if not. First to 10 wins.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Side B · Features</h2>
+                <ol>
+                    <li><b>B1</b>Works with the original Hitster cards</li>
+                    <li><b>B2</b>Make decks from Apple Music playlists</li>
+                    <li><b>B3</b>Print your own cards from the app</li>
+                    <li><b>B4</b>Fully open source</li>
+                </ol>
+            </section>
+
+            <section class="cards">
+                <img src="/apps/trackstar/qr_codes.png" alt="Sheet of QR code card fronts" loading="lazy" />
+                <img src="/apps/trackstar/song_cards.png" alt="Sheet of song card backs with artist, year and title" loading="lazy" />
+            </section>
+        </main>
+
+        <footer>
+            2026 · <a href="/">Bennowo</a> · <a href="/apps/trackstar/privacy-policy">Privacy</a> · <a href="/apps/trackstar/imprint">Imprint</a>
+        </footer>
+
+        <script src="/scripts/sw-register.js"></script>
+        <script>
+            // double press flips the icon into a spinning record and back
+            const disc = document.querySelector(".disc");
+            let last = 0;
+            disc.addEventListener("click", () => {
+                const now = Date.now();
+                if (now - last < 350) {
+                    const vinyl = disc.classList.toggle("vinyl");
+                    disc.setAttribute("aria-pressed", vinyl);
+                    last = 0;
+                } else {
+                    last = now;
+                }
+            });
+        </script>
+    </body>
+</html>
