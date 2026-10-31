@@ -9,7 +9,7 @@
         <link rel="icon" href="/apps/trackstar/icon.png" />
         <link rel="apple-touch-icon" href="/apps/trackstar/icon.png" />
         <link rel="stylesheet" href="/apps/trackstar/trackstar.css" />
-        <meta name="theme-color" content="#1F1B2E" />
+        <meta name="theme-color" content="#000000" />
     </head>
     <body>
         <nav>
@@ -25,28 +25,124 @@
                 </button>
                 <h1>TrackStar</h1>
                 <p>Guess the release year. Build the timeline.<br />An open-source, Hitster-inspired music game for iPhone.</p>
+                <!-- ponytail: placeholder id, swap in the real App Store id once the listing is live -->
+                <a class="appstore" href="https://apps.apple.com/app/idXXXXXXXXXX" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+                    <span><small>Download on the</small>App Store</span>
+                </a>
                 <div class="links">
                     <a href="https://github.com/BennoCrafter/TrackStar" target="_blank" rel="noopener noreferrer">▶ GitHub</a>
-                    <a href="https://discord.gg/JNu7qXGpzV" target="_blank" rel="noopener noreferrer">▶ Discord</a>
                 </div>
             </header>
 
             <section>
-                <h2>Side A · Two ways to play</h2>
-                <div class="modes">
-                    <div>
-                        <h3>With Cards</h3>
-                        <p>Scan a printed TrackStar card or an original German Hitster card. The song plays, you place it in your timeline, then flip the card to check.</p>
-                    </div>
-                    <div>
-                        <h3>No Cards</h3>
-                        <p>Nothing to print. Turn the phone sideways: it picks the songs and keeps everyone's timeline. Whoever recognizes a song places it: +1 if it fits, −1 if not. First to 10 wins.</p>
-                    </div>
+                <h2>Side A · With cards</h2>
+                <p class="intro">You play with real cards on the table, like the board game. Print your own from the app (any song pack or Apple Music playlist becomes a PDF: QR codes on the front, artist, year and title on the back) or use the original German Hitster cards. The phone only scans and plays the song.</p>
+                <div class="steps">
+                    <article>
+                        <div class="art">
+                            <div class="card qr" aria-hidden="true">
+                                <svg viewBox="0 0 7 7"><path d="M0 0h3v3H0zM4 0h3v3H4zM0 4h3v3H0zM4 4h1v1H4zM6 4h1v1H6zM5 5h1v1H5zM4 6h1v1H4zM6 6h1v1H6z"/></svg>
+                            </div>
+                            <div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+                        </div>
+                        <h3>1. Scan</h3>
+                        <p>Scan the QR code on a card. TrackStar plays the song through Apple Music. No peeking at the back.</p>
+                    </article>
+                    <article>
+                        <div class="art">
+                            <div class="timeline" aria-hidden="true">
+                                <div class="card" style="--a:#0369A1;--b:#7C3AED">1986</div>
+                                <div class="card qr lift">?</div>
+                                <div class="card" style="--a:#1E40AF;--b:#7C3AED">2004</div>
+                            </div>
+                        </div>
+                        <h3>2. Place</h3>
+                        <p>Put the card in your timeline, <b>back side down</b>: before, after or between the cards already there.</p>
+                    </article>
+                    <article>
+                        <div class="art">
+                            <div class="timeline" aria-hidden="true">
+                                <div class="card" style="--a:#0369A1;--b:#7C3AED">1986</div>
+                                <div class="card check" style="--a:#0F766E;--b:#0369A1">1993</div>
+                                <div class="card" style="--a:#1E40AF;--b:#7C3AED">2004</div>
+                            </div>
+                        </div>
+                        <h3>3. Flip</h3>
+                        <p>Turn it over and check the year. Right spot? The card stays. Wrong? It's gone. Then it's the next player's turn.</p>
+                    </article>
+                    <article>
+                        <div class="art">
+                            <div class="stack" aria-hidden="true">
+                                <div class="card" style="--a:#9F1239;--b:#EA580C"></div>
+                                <div class="card" style="--a:#4D7C0F;--b:#15803D"></div>
+                                <div class="card" style="--a:#BE185D;--b:#6D28D9"></div>
+                                <div class="card" style="--a:#0F766E;--b:#0369A1"></div>
+                                <div class="card" style="--a:#B91C1C;--b:#C026D3">10</div>
+                            </div>
+                        </div>
+                        <h3>4. Win</h3>
+                        <p>The first player with 10 cards in their timeline wins.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="cards">
+                <img src="/apps/trackstar/qr_codes.png" alt="Sheet of QR code card fronts" loading="lazy" />
+                <img src="/apps/trackstar/song_cards.png" alt="Sheet of song card backs with artist, year and title" loading="lazy" />
+            </section>
+
+            <section>
+                <h2>Side B · No cards</h2>
+                <p class="intro">Nothing to print. Turn the phone sideways: it picks the songs and keeps everyone's timeline.</p>
+                <div class="steps">
+                    <article>
+                        <div class="art">
+                            <div class="phone" aria-hidden="true">
+                                <span style="--c:#FFB020">A</span><span style="--c:#0369A1">B</span><span style="--c:#BE185D">C</span>
+                            </div>
+                        </div>
+                        <h3>1. Set up</h3>
+                        <p>Add the players and pick a song pack. Everyone gets a first card to start their timeline.</p>
+                    </article>
+                    <article>
+                        <div class="art">
+                            <div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+                            <div class="choices" aria-hidden="true">
+                                <span>Take On Me</span><span class="pick">Hungry Eyes</span><span>Africa</span>
+                            </div>
+                        </div>
+                        <h3>2. Listen</h3>
+                        <p>The phone plays a song. <b>Whoever recognizes it</b> takes the turn and names it out of three.</p>
+                    </article>
+                    <article>
+                        <div class="art">
+                            <div class="timeline" aria-hidden="true">
+                                <div class="card" style="--a:#0369A1;--b:#7C3AED">1986</div>
+                                <div class="card check" style="--a:#0369A1;--b:#7C3AED">1987</div>
+                                <div class="card" style="--a:#0F766E;--b:#0369A1">1991</div>
+                            </div>
+                            <b class="plus" aria-hidden="true">+1</b>
+                        </div>
+                        <h3>3. Place</h3>
+                        <p>Tap the gap in your timeline where it belongs. Fits: +1 point. Wrong: the card is gone and it's −1.</p>
+                    </article>
+                    <article>
+                        <div class="art">
+                            <div class="scores" aria-hidden="true">
+                                <div style="--c:#FFB020;--w:100%"><span>A</span><i></i><b>10</b></div>
+                                <div style="--c:#0369A1;--w:70%"><span>B</span><i></i><b>7</b></div>
+                                <div style="--c:#BE185D;--w:40%"><span>C</span><i></i><b>4</b></div>
+                            </div>
+                        </div>
+                        <h3>4. Win</h3>
+                        <p>First to 10 points wins. The score and the rules can be changed in Settings.</p>
+                    </article>
                 </div>
             </section>
 
             <section>
-                <h2>Side B · Features</h2>
+                <h2>Bonus track · Features</h2>
                 <ol>
                     <li><b>B1</b>Works with the original Hitster cards</li>
                     <li><b>B2</b>Make decks from Apple Music playlists</li>
@@ -55,10 +151,6 @@
                 </ol>
             </section>
 
-            <section class="cards">
-                <img src="/apps/trackstar/qr_codes.png" alt="Sheet of QR code card fronts" loading="lazy" />
-                <img src="/apps/trackstar/song_cards.png" alt="Sheet of song card backs with artist, year and title" loading="lazy" />
-            </section>
         </main>
 
         <footer>
