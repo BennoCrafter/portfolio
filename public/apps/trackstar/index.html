@@ -6,6 +6,8 @@
         <title>TrackStar — Bennowo</title>
         <link rel="canonical" href="https://www.bennowo.de/apps/trackstar/" />
         <meta name="description" content="TrackStar: an open-source Hitster-inspired music game for iOS." />
+        <link rel="alternate" hreflang="en" href="https://www.bennowo.de/apps/trackstar/" />
+        <link rel="alternate" hreflang="de" href="https://www.bennowo.de/apps/trackstar/de" />
         <link rel="icon" href="/apps/trackstar/icon.png" />
         <link rel="apple-touch-icon" href="/apps/trackstar/icon.png" />
         <link rel="stylesheet" href="/apps/trackstar/trackstar.css" />
@@ -32,58 +34,135 @@
                 </a>
                 <div class="links">
                     <a href="https://github.com/BennoCrafter/TrackStar" target="_blank" rel="noopener noreferrer">▶ GitHub</a>
+                    <a href="/apps/trackstar/de" hreflang="de" lang="de">Deutsch</a>
                 </div>
             </header>
 
             <section>
-                <h2>Side A · With cards</h2>
-                <p class="intro">You play with real cards on the table, like the board game. Print your own from the app (any song pack or Apple Music playlist becomes a PDF: QR codes on the front, artist, year and title on the back) or use the original German Hitster cards. The phone only scans and plays the song.</p>
-                <div class="steps">
-                    <article>
-                        <div class="art">
-                            <div class="card qr" aria-hidden="true">
-                                <svg viewBox="0 0 7 7"><path d="M0 0h3v3H0zM4 0h3v3H4zM0 4h3v3H0zM4 4h1v1H4zM6 4h1v1H6zM5 5h1v1H5zM4 6h1v1H4zM6 6h1v1H6z"/></svg>
-                            </div>
-                            <div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-                        </div>
-                        <h3>1. Scan</h3>
-                        <p>Scan the QR code on a card. TrackStar plays the song through Apple Music. No peeking at the back.</p>
-                    </article>
-                    <article>
-                        <div class="art">
-                            <div class="timeline" aria-hidden="true">
+                <h2>Side A · Party</h2>
+                <p class="intro">One phone, passed around the room. Turn it sideways: it plays the songs and keeps everyone’s timeline.</p>
+                <div class="tracks">
+                    <details class="track" open>
+                        <summary>
+                            <span class="no">A1</span>
+                            <span class="title"><b>TrackStar Classic</b><small>Take turns. Challenge. Steal.</small></span>
+                            <span class="len">2–8 players<small>≈ 30 min</small></span>
+                        </summary>
+                        <div class="art" aria-hidden="true">
+                            <div class="timeline">
                                 <div class="card" style="--a:#0369A1;--b:#7C3AED">1986</div>
                                 <div class="card qr lift">?</div>
                                 <div class="card" style="--a:#1E40AF;--b:#7C3AED">2004</div>
                             </div>
+                            <span class="chip"><i style="--c:#BE185D">B</i>challenge! <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg></span>
                         </div>
-                        <h3>2. Place</h3>
-                        <p>Put the card in your timeline, <b>back side down</b>: before, after or between the cards already there.</p>
-                    </article>
-                    <article>
-                        <div class="art">
-                            <div class="timeline" aria-hidden="true">
-                                <div class="card" style="--a:#0369A1;--b:#7C3AED">1986</div>
-                                <div class="card check" style="--a:#0F766E;--b:#0369A1">1993</div>
-                                <div class="card" style="--a:#1E40AF;--b:#7C3AED">2004</div>
+                        <ul>
+                            <li>On your turn the phone plays a song and you place it in your timeline.</li>
+                            <li>Everyone else gets 5 seconds to <b>challenge</b>: spend a star and pick a different gap.</li>
+                            <li>Name the song to earn a star, up to 5. Three stars buy a card that slots in for free.</li>
+                            <li>Right spot: you keep the card. Wrong, but a challenger got it right: <b>they steal it</b>.</li>
+                            <li>Pick a level per player. Rookies see the era’s color as a hint.</li>
+                        </ul>
+                    </details>
+                    <details class="track">
+                        <summary>
+                            <span class="no">A2</span>
+                            <span class="title"><b>Quick Draw</b><small>A buzzer race, one snippet at a time.</small></span>
+                            <span class="len">3–6 players<small>≈ 20 min</small></span>
+                        </summary>
+                        <div class="art" aria-hidden="true">
+                            <div class="wave"><i></i><i></i><i></i><i></i><i></i></div>
+                            <div class="stages"><span class="on">2s</span><span class="on">8s</span><span>20s</span><span>30s</span></div>
+                        </div>
+                        <ul>
+                            <li>The song plays in snippets: 2, 8, 20, then 30 seconds.</li>
+                            <li>Buzz in and name it out of four. <b>The earlier you buzz, the more points</b> (4, 3, 2, 1).</li>
+                            <li>Wrong guess? You’re locked out for that song and the music keeps going.</li>
+                            <li>Nobody buzzes? The player with the fewest cards places it blind.</li>
+                            <li>First to 15 points wins.</li>
+                        </ul>
+                    </details>
+                    <details class="track">
+                        <summary>
+                            <span class="no">A3</span>
+                            <span class="title"><b>Jam Session</b><small>Everyone together, one timeline.</small></span>
+                            <span class="len">2–10 players<small>15–25 min</small></span>
+                        </summary>
+                        <div class="art" aria-hidden="true">
+                            <div class="timeline">
+                                <div class="card" style="--a:#9F1239;--b:#EA580C">1979</div>
+                                <div class="card" style="--a:#0369A1;--b:#7C3AED">1988</div>
+                                <div class="card check" style="--a:#0F766E;--b:#0369A1">1996</div>
+                            </div>
+                            <div class="lives"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.9 4.5 6.6 4.5c2.2 0 3.6 1.2 5.4 3.2 1.8-2 3.2-3.2 5.4-3.2 3.7 0 5.7 3.9 4.2 7.3C19.5 16.4 12 21 12 21z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.9 4.5 6.6 4.5c2.2 0 3.6 1.2 5.4 3.2 1.8-2 3.2-3.2 5.4-3.2 3.7 0 5.7 3.9 4.2 7.3C19.5 16.4 12 21 12 21z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.9 4.5 6.6 4.5c2.2 0 3.6 1.2 5.4 3.2 1.8-2 3.2-3.2 5.4-3.2 3.7 0 5.7 3.9 4.2 7.3C19.5 16.4 12 21 12 21z"/></svg><span class="lost"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.9 4.5 6.6 4.5c2.2 0 3.6 1.2 5.4 3.2 1.8-2 3.2-3.2 5.4-3.2 3.7 0 5.7 3.9 4.2 7.3C19.5 16.4 12 21 12 21z"/></svg></span><span class="lost"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.9 4.5 6.6 4.5c2.2 0 3.6 1.2 5.4 3.2 1.8-2 3.2-3.2 5.4-3.2 3.7 0 5.7 3.9 4.2 7.3C19.5 16.4 12 21 12 21z"/></svg></span></div>
+                        </div>
+                        <ul>
+                            <li>A co-op mode: the whole room builds <b>one shared timeline</b>. The DJ role rotates.</li>
+                            <li>Place it wrong and you lose a life. Name the song and you win one back, up to 5.</li>
+                            <li>Choose a difficulty: Chill, Gig or Stadium.</li>
+                            <li>Run out of lives and the deck wins. Your best run per pack is saved.</li>
+                        </ul>
+                    </details>
+                    <details class="track">
+                        <summary>
+                            <span class="no">A4</span>
+                            <span class="title"><b>Year Bet</b><small>Guess the exact year.</small></span>
+                            <span class="len">2–8 players<small>≈ 20 min</small></span>
+                        </summary>
+                        <div class="art" aria-hidden="true">
+                            <div class="wheel">
+                                <span>1989</span><span>1990</span><span class="taken">1991<small>A</small></span><span class="pick">1992</span><span>1993</span><span>1994</span>
                             </div>
                         </div>
-                        <h3>3. Flip</h3>
-                        <p>Turn it over and check the year. Right spot? The card stays. Wrong? It's gone. Then it's the next player's turn.</p>
-                    </article>
-                    <article>
-                        <div class="art">
-                            <div class="stack" aria-hidden="true">
-                                <div class="card" style="--a:#9F1239;--b:#EA580C"></div>
-                                <div class="card" style="--a:#4D7C0F;--b:#15803D"></div>
-                                <div class="card" style="--a:#BE185D;--b:#6D28D9"></div>
-                                <div class="card" style="--a:#0F766E;--b:#0369A1"></div>
-                                <div class="card" style="--a:#B91C1C;--b:#C026D3">10</div>
-                            </div>
+                        <ul>
+                            <li>Spin the year wheel in turns. Years someone already picked are taken.</li>
+                            <li>Exact year: 3 points. Closest guess: 2. Within 3 years: 1.</li>
+                            <li>Artist packs swap years for albums.</li>
+                            <li>First to 20 points wins.</li>
+                        </ul>
+                    </details>
+                </div>
+            </section>
+
+            <section>
+                <h2>Side B · Solo &amp; cards</h2>
+                <div class="tracks">
+                    <details class="track">
+                        <summary>
+                            <span class="no">B1</span>
+                            <span class="title"><b>Higher or Lower</b><small>Solo. How long can you go?</small></span>
+                            <span class="len">1 player<small>3–10 min</small></span>
+                        </summary>
+                        <div class="art" aria-hidden="true">
+                            <div class="card" style="--a:#1E40AF;--b:#7C3AED">1999</div>
+                            <div class="hl"><span>Earlier</span><span class="pick">Later</span></div>
                         </div>
-                        <h3>4. Win</h3>
-                        <p>The first player with 10 cards in their timeline wins.</p>
-                    </article>
+                        <ul>
+                            <li>Is the next song older or newer than the one on the table? Keep the streak going.</li>
+                            <li>Three lives. Every 5th song is golden: guess its decade for an extra one.</li>
+                            <li><b>Daily Mix</b>: the same 10 songs for everyone, once a day per pack. Share your result.</li>
+                            <li>Leaderboards for your longest streak and the Daily Mix.</li>
+                        </ul>
+                    </details>
+                    <details class="track">
+                        <summary>
+                            <span class="no">B2</span>
+                            <span class="title"><b>Card Game</b><small>Printed cards on the table.</small></span>
+                            <span class="len">Any group<small>Open end</small></span>
+                        </summary>
+                        <div class="art" aria-hidden="true">
+                            <div class="card qr">
+                                <svg viewBox="0 0 7 7"><path d="M0 0h3v3H0zM4 0h3v3H4zM0 4h3v3H0zM4 4h1v1H4zM6 4h1v1H6zM5 5h1v1H5zM4 6h1v1H4zM6 6h1v1H6z"/></svg>
+                            </div>
+                            <div class="wave"><i></i><i></i><i></i><i></i><i></i></div>
+                        </div>
+                        <ul>
+                            <li>Play with real cards, like the board game. The phone only scans the QR code and plays the song.</li>
+                            <li>Print your own from any song pack or Apple Music playlist, or use the original German Hitster cards.</li>
+                            <li>Pick the rules before the first scan: Classic, Jam Session or Year Bet.</li>
+                            <li>Optional star counter on screen. Rookies can peek at the era’s color.</li>
+                        </ul>
+                    </details>
                 </div>
             </section>
 
@@ -93,61 +172,20 @@
             </section>
 
             <section>
-                <h2>Side B · No cards</h2>
-                <p class="intro">Nothing to print. Turn the phone sideways: it picks the songs and keeps everyone's timeline.</p>
-                <div class="steps">
-                    <article>
-                        <div class="art">
-                            <div class="phone" aria-hidden="true">
-                                <span style="--c:#FFB020">A</span><span style="--c:#0369A1">B</span><span style="--c:#BE185D">C</span>
-                            </div>
-                        </div>
-                        <h3>1. Set up</h3>
-                        <p>Add the players and pick a song pack. Everyone gets a first card to start their timeline.</p>
-                    </article>
-                    <article>
-                        <div class="art">
-                            <div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-                            <div class="choices" aria-hidden="true">
-                                <span>Take On Me</span><span class="pick">Hungry Eyes</span><span>Africa</span>
-                            </div>
-                        </div>
-                        <h3>2. Listen</h3>
-                        <p>The phone plays a song. <b>Whoever recognizes it</b> takes the turn and names it out of three.</p>
-                    </article>
-                    <article>
-                        <div class="art">
-                            <div class="timeline" aria-hidden="true">
-                                <div class="card" style="--a:#0369A1;--b:#7C3AED">1986</div>
-                                <div class="card check" style="--a:#0369A1;--b:#7C3AED">1987</div>
-                                <div class="card" style="--a:#0F766E;--b:#0369A1">1991</div>
-                            </div>
-                            <b class="plus" aria-hidden="true">+1</b>
-                        </div>
-                        <h3>3. Place</h3>
-                        <p>Tap the gap in your timeline where it belongs. Fits: +1 point. Wrong: the card is gone and it's −1.</p>
-                    </article>
-                    <article>
-                        <div class="art">
-                            <div class="scores" aria-hidden="true">
-                                <div style="--c:#FFB020;--w:100%"><span>A</span><i></i><b>10</b></div>
-                                <div style="--c:#0369A1;--w:70%"><span>B</span><i></i><b>7</b></div>
-                                <div style="--c:#BE185D;--w:40%"><span>C</span><i></i><b>4</b></div>
-                            </div>
-                        </div>
-                        <h3>4. Win</h3>
-                        <p>First to 10 points wins. The score and the rules can be changed in Settings.</p>
-                    </article>
+                <h2>Bonus track · Wild Tracks</h2>
+                <p class="intro">About every sixth song in Classic and Quick Draw is a Wild Track that shakes up the round. You can turn them off.</p>
+                <div class="wild">
+                    <span>Bonus card</span><span>Free challenges</span><span>Duet</span><span>Intro only</span><span>Deep cut</span><span>Blackout</span><span>Double stars</span>
                 </div>
             </section>
 
             <section>
-                <h2>Bonus track · Features</h2>
+                <h2>Liner notes</h2>
                 <ol>
-                    <li><b>B1</b>Works with the original Hitster cards</li>
-                    <li><b>B2</b>Make decks from Apple Music playlists</li>
-                    <li><b>B3</b>Print your own cards from the app</li>
-                    <li><b>B4</b>Fully open source</li>
+                    <li>Works with the original Hitster cards</li>
+                    <li>Make decks from Apple Music playlists</li>
+                    <li>Print your own cards from the app</li>
+                    <li>Fully open source</li>
                 </ol>
             </section>
 

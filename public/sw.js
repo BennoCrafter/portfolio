@@ -1,4 +1,4 @@
-const CACHE = "bennowo-v7";
+const CACHE = "bennowo-v11";
 const SHELL = [
     "/",
     "/about",

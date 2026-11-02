@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>TrackStar: das Musikspiel — Bennowo</title>
+        <link rel="canonical" href="https://www.bennowo.de/apps/trackstar/de" />
+        <meta name="description" content="TrackStar: ein Open-Source-Musikspiel für iOS, inspiriert von Hitster." />
+        <link rel="alternate" hreflang="en" href="https://www.bennowo.de/apps/trackstar/" />
+        <link rel="alternate" hreflang="de" href="https://www.bennowo.de/apps/trackstar/de" />
+        <link rel="icon" href="/apps/trackstar/icon.png" />
+        <link rel="apple-touch-icon" href="/apps/trackstar/icon.png" />
+        <link rel="stylesheet" href="/apps/trackstar/trackstar.css" />
+        <meta name="theme-color" content="#000000" />
+    </head>
+    <body>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/projects">Projects</a>
+        </nav>
+
+        <main>
+            <header>
+                <button class="disc" type="button" aria-label="TrackStar-App-Icon. Doppelt tippen, um es in eine Schallplatte zu verwandeln" aria-pressed="false">
+                    <img src="/apps/trackstar/icon.png" alt="" />
+                </button>
+                <h1>TrackStar</h1>
+                <p>Errate das Erscheinungsjahr. Bau deine Zeitleiste.<br />Ein Open-Source-Musikspiel fürs iPhone, inspiriert von Hitster.</p>
+                <!-- ponytail: placeholder id, swap in the real App Store id once the listing is live -->
+                <a class="appstore" href="https://apps.apple.com/app/idXXXXXXXXXX" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+                    <span><small>Laden im</small>App Store</span>
+                </a>
+                <div class="links">
+                    <a href="https://github.com/BennoCrafter/TrackStar" target="_blank" rel="noopener noreferrer">▶ GitHub</a>
+                    <a href="/apps/trackstar/" hreflang="en" lang="en">English</a>
+                </div>
+            </header>
+
+            <section>
+                <h2>Seite A · Party</h2>
+                <p class="intro">Ein Handy, das reihum geht. Quer halten: Es spielt die Songs und führt die Zeitleisten aller Spieler.</p>
+                <div class="tracks">
+                    <details class="track" open>
+                        <summary>
+                            <span class="no">A1</span>
+                            <span class="title"><b>TrackStar Classic</b><small>Reihum spielen. Herausfordern. Klauen.</small></span>
+                            <span class="len">2–8 Spieler<small>≈ 30 Min.</small></span>
+                        </summary>
+                        <div class="art" aria-hidden="true">
+                            <div class="timeline">
+                                <div class="card" style="--a:#0369A1;--b:#7C3AED">1986</div>
+                                <div class="card qr lift">?</div>
+                                <div class="card" style="--a:#1E40AF;--b:#7C3AED">2004</div>
+                            </div>
+                            <span class="chip"><i style="--c:#BE185D">B</i>Challenge! <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg></span>
+                        </div>
+                        <ul>
+                            <li>Bist du dran, spielt das Handy einen Song und du ordnest ihn in deine Zeitleiste ein.</li>
+                            <li>Alle anderen haben 5 Sekunden für eine <b>Herausforderung</b>: einen Stern einsetzen und eine andere Lücke wählen.</li>
+                            <li>Wer den Song benennt, bekommt einen Stern (höchstens 5). Für drei Sterne gibt es eine Karte, die automatisch richtig einsortiert wird.</li>
+                            <li>Richtig gelegt: Die Karte bleibt bei dir. Falsch, aber ein Herausforderer lag richtig: <b>Er klaut sie</b>.</li>
+                            <li>Jeder Spieler wählt seine Stufe. Rookies sehen als Hinweis die Farbe der Ära.</li>
+                        </ul>
+                    </details>
+                    <details class="track">
+                        <summary>
+                            <span class="no">A2</span>
+                            <span class="title"><b>Quick Draw</b><small>Ein Buzzer-Rennen, Ausschnitt für Ausschnitt.</small></span>
+                            <span class="len">3–6 Spieler<small>≈ 20 Min.</small></span>
+                        </summary>
+                        <div class="art" aria-hidden="true">
+                            <div class="wave"><i></i><i></i><i></i><i></i><i></i></div>
+                            <div class="stages"><span class="on">2s</span><span class="on">8s</span><span>20s</span><span>30s</span></div>
+                        </div>
+                        <ul>
+                            <li>Der Song läuft in Ausschnitten: 2, 8, 20, dann 30 Sekunden.</li>
+                            <li>Buzzern und aus vier Antworten den richtigen Song wählen. <b>Je früher du buzzerst, desto mehr Punkte</b> (4, 3, 2, 1).</li>
+                            <li>Falsch geraten? Für diesen Song bist du raus, und die Musik läuft weiter.</li>
+                            <li>Niemand buzzert? Dann ordnet der Spieler mit den wenigsten Karten den Song blind ein.</li>
+                            <li>Wer zuerst 15 Punkte hat, gewinnt.</li>
+                        </ul>
+                    </details>
+                    <details class="track">
+                        <summary>
+                            <span class="no">A3</span>
+                            <span class="title"><b>Jam Session</b><small>Alle zusammen, eine Zeitleiste.</small></span>
+                            <span class="len">2–10 Spieler<small>15–25 Min.</small></span>
+                        </summary>
+                        <div class="art" aria-hidden="true">
+                            <div class="timeline">
+                                <div class="card" style="--a:#9F1239;--b:#EA580C">1979</div>
+                                <div class="card" style="--a:#0369A1;--b:#7C3AED">1988</div>
+                                <div class="card check" style="--a:#0F766E;--b:#0369A1">1996</div>
+                            </div>
+                            <div class="lives"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.9 4.5 6.6 4.5c2.2 0 3.6 1.2 5.4 3.2 1.8-2 3.2-3.2 5.4-3.2 3.7 0 5.7 3.9 4.2 7.3C19.5 16.4 12 21 12 21z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.9 4.5 6.6 4.5c2.2 0 3.6 1.2 5.4 3.2 1.8-2 3.2-3.2 5.4-3.2 3.7 0 5.7 3.9 4.2 7.3C19.5 16.4 12 21 12 21z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.9 4.5 6.6 4.5c2.2 0 3.6 1.2 5.4 3.2 1.8-2 3.2-3.2 5.4-3.2 3.7 0 5.7 3.9 4.2 7.3C19.5 16.4 12 21 12 21z"/></svg><span class="lost"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.9 4.5 6.6 4.5c2.2 0 3.6 1.2 5.4 3.2 1.8-2 3.2-3.2 5.4-3.2 3.7 0 5.7 3.9 4.2 7.3C19.5 16.4 12 21 12 21z"/></svg></span><span class="lost"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.9 4.5 6.6 4.5c2.2 0 3.6 1.2 5.4 3.2 1.8-2 3.2-3.2 5.4-3.2 3.7 0 5.7 3.9 4.2 7.3C19.5 16.4 12 21 12 21z"/></svg></span></div>
+                        </div>
+                        <ul>
+                            <li>Ein kooperativer Modus: Alle bauen zusammen an <b>einer gemeinsamen Zeitleiste</b>. Der DJ wechselt reihum.</li>
+                            <li>Falsch eingeordnet kostet ein Leben. Wer den Song benennt, holt eins zurück (höchstens 5).</li>
+                            <li>Wähle einen Schwierigkeitsgrad: Chill, Gig oder Stadium.</li>
+                            <li>Sind alle Leben weg, hat das Deck gewonnen. Euer Rekord pro Pack wird gespeichert.</li>
+                        </ul>
+                    </details>
+                    <details class="track">
+                        <summary>
+                            <span class="no">A4</span>
+                            <span class="title"><b>Year Bet</b><small>Tippe das genaue Jahr.</small></span>
+                            <span class="len">2–8 Spieler<small>≈ 20 Min.</small></span>
+                        </summary>
+                        <div class="art" aria-hidden="true">
+                            <div class="wheel">
+                                <span>1989</span><span>1990</span><span class="taken">1991<small>A</small></span><span class="pick">1992</span><span>1993</span><span>1994</span>
+                            </div>
+                        </div>
+                        <ul>
+                            <li>Reihum dreht jeder am Jahresrad. Schon getippte Jahre sind vergeben.</li>
+                            <li>Genaues Jahr: 3 Punkte. Nächster Tipp: 2. Höchstens 3 Jahre daneben: 1.</li>
+                            <li>Bei Künstler-Packs tippst du Alben statt Jahre.</li>
+                            <li>Wer zuerst 20 Punkte hat, gewinnt.</li>
+                        </ul>
+                    </details>
+                </div>
+            </section>
+
+            <section>
+                <h2>Seite B · Solo &amp; Karten</h2>
+                <div class="tracks">
+                    <details class="track">
+                        <summary>
+                            <span class="no">B1</span>
+                            <span class="title"><b>Higher or Lower</b><small>Solo. Wie lange hältst du durch?</small></span>
+                            <span class="len">1 Spieler<small>3–10 Min.</small></span>
+                        </summary>
+                        <div class="art" aria-hidden="true">
+                            <div class="card" style="--a:#1E40AF;--b:#7C3AED">1999</div>
+                            <div class="hl"><span>Früher</span><span class="pick">Später</span></div>
+                        </div>
+                        <ul>
+                            <li>Ist der nächste Song älter oder neuer als der auf dem Tisch? Halte deine Serie am Laufen.</li>
+                            <li>Drei Leben. Jeder 5. Song ist golden: Errate sein Jahrzehnt für ein Extraleben.</li>
+                            <li><b>Daily Mix</b>: dieselben 10 Songs für alle, einmal am Tag pro Pack. Teile dein Ergebnis.</li>
+                            <li>Ranglisten für die längste Serie und den Daily Mix.</li>
+                        </ul>
+                    </details>
+                    <details class="track">
+                        <summary>
+                            <span class="no">B2</span>
+                            <span class="title"><b>Kartenspiel</b><small>Gedruckte Karten auf dem Tisch.</small></span>
+                            <span class="len">Beliebig viele<small>Open End</small></span>
+                        </summary>
+                        <div class="art" aria-hidden="true">
+                            <div class="card qr">
+                                <svg viewBox="0 0 7 7"><path d="M0 0h3v3H0zM4 0h3v3H4zM0 4h3v3H0zM4 4h1v1H4zM6 4h1v1H6zM5 5h1v1H5zM4 6h1v1H4zM6 6h1v1H6z"/></svg>
+                            </div>
+                            <div class="wave"><i></i><i></i><i></i><i></i><i></i></div>
+                        </div>
+                        <ul>
+                            <li>Gespielt wird mit echten Karten wie beim Brettspiel. Das Handy scannt nur den QR-Code und spielt den Song ab.</li>
+                            <li>Druck dir eigene Karten aus jedem Song-Pack oder jeder Apple-Music-Playlist, oder nimm die originalen deutschen Hitster-Karten.</li>
+                            <li>Vor dem ersten Scan die Regeln wählen: Classic, Jam Session oder Year Bet.</li>
+                            <li>Auf Wunsch zählt das Handy die Sterne mit. Rookies dürfen die Farbe der Ära sehen.</li>
+                        </ul>
+                    </details>
+                </div>
+            </section>
+
+            <section class="cards">
+                <img src="/apps/trackstar/qr_codes.png" alt="Bogen mit den QR-Code-Vorderseiten der Karten" loading="lazy" />
+                <img src="/apps/trackstar/song_cards.png" alt="Bogen mit den Kartenrückseiten mit Künstler, Jahr und Titel" loading="lazy" />
+            </section>
+
+            <section>
+                <h2>Bonustrack · Wild Tracks</h2>
+                <p class="intro">Etwa jeder sechste Song in Classic und Quick Draw ist ein Wild Track, der die Runde aufmischt. Lässt sich auch abschalten.</p>
+                <div class="wild">
+                    <span>Bonuskarte</span><span>Gratis-Herausforderungen</span><span>Duett</span><span>Nur das Intro</span><span>Deep Cut</span><span>Blackout</span><span>Doppelte Sterne</span>
+                </div>
+            </section>
+
+            <section>
+                <h2>Booklet</h2>
+                <ol>
+                    <li>Funktioniert mit den originalen Hitster-Karten</li>
+                    <li>Decks aus Apple-Music-Playlists erstellen</li>
+                    <li>Eigene Karten direkt aus der App drucken</li>
+                    <li>Komplett Open Source</li>
+                </ol>
+            </section>
+
+        </main>
+
+        <footer>
+            2026 · <a href="/">Bennowo</a> · <a href="/apps/trackstar/privacy-policy">Datenschutz</a> · <a href="/apps/trackstar/imprint">Impressum</a>
+        </footer>
+
+        <script src="/scripts/sw-register.js"></script>
+        <script>
+            // double press flips the icon into a spinning record and back
+            const disc = document.querySelector(".disc");
+            let last = 0;
+            disc.addEventListener("click", () => {
+                const now = Date.now();
+                if (now - last < 350) {
+                    const vinyl = disc.classList.toggle("vinyl");
+                    disc.setAttribute("aria-pressed", vinyl);
+                    last = 0;
+                } else {
+                    last = now;
+                }
+            });
+        </script>
+    </body>
+</html>

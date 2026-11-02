@@ -8,22 +8,20 @@
         <link rel="canonical" href="https://www.bennowo.de/" />
         <link
             rel="icon"
-            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%235f7a52'/%3E%3Ctext x='50' y='70' font-size='60' font-family='system-ui,sans-serif' font-weight='800' text-anchor='middle' fill='%23fff'%3EB%3C/text%3E%3C/svg%3E"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23ad4824'/%3E%3Ctext x='50' y='70' font-size='60' font-family='system-ui,sans-serif' font-weight='800' text-anchor='middle' fill='%23fff'%3EB%3C/text%3E%3C/svg%3E"
         />
         <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
             rel="stylesheet"
         />
-        <script src="scripts/theme.js"></script>
         <link rel="stylesheet" href="css/styles.css" />
         <link rel="manifest" href="manifest.webmanifest" />
         <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-        <meta name="theme-color" content="#f6f7f2" media="(prefers-color-scheme: light)" />
-        <meta name="theme-color" content="#1a1c2c" media="(prefers-color-scheme: dark)" />
+        <meta name="theme-color" content="#fffaf6" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-title" content="Bennowo" />
     </head>
-    <body onload="typeWriter()">
+    <body>
         <!-- Menu Bar -->
         <nav>
             <ul>
@@ -34,37 +32,45 @@
         </nav>
 
         <main class="hero">
-            <div class="hero-card">
-                <img class="avatar-stamp" src="assets/profile.png" alt="Profile photo">
-                <div class="hero-text">
-                    <p class="eyebrow">Hello, I'm</p>
-                    <h1>Bennowo</h1>
-                    <p id="about-p"></p>
-                    <div
-                        class="socials-container"
-                        id="socials-container"
-                    ></div>
-                </div>
+            <div class="stage">
+                <p class="hi"><img src="assets/profile.png" alt="Profile photo" /> hey, i'm</p>
+                <h1 class="name">benno</h1>
+                <p class="builds">a hobby developer who builds <strong id="thing"></strong></p>
+                <div class="socials-container" id="socials-container"></div>
             </div>
         </main>
 
         <footer>© 2026 Bennowo · <a href="https://github.com/BennoCrafter" target="_blank" rel="noopener noreferrer">GitHub</a></footer>
 
         <script src="scripts/socials.js"></script>
+        <script src="scripts/hop.js"></script>
         <script src="scripts/sw-register.js"></script>
         <script>
-            var i = 0;
-            var txt = "a hobby developer who loves to code.";
-            var speed = 25;
+            // Things from the About page, typed out one after another
+            const things = ["iOS apps with SwiftUI.", "bots and tools in python.", "stuff for my school.", "almost everything open source."];
+            const out = document.getElementById("thing");
+            const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+            let t = 0;
+            let c = 0;
+            let deleting = false;
 
-            function typeWriter() {
-                if (i < txt.length) {
-                    document.getElementById("about-p").innerHTML +=
-                        txt.charAt(i);
-                    i++;
-                    setTimeout(typeWriter, speed);
+            function tick() {
+                const word = things[t];
+                c += deleting ? -1 : 1;
+                out.textContent = word.slice(0, c);
+                if (!deleting && c === word.length) {
+                    deleting = true;
+                    return setTimeout(tick, 1800);
                 }
+                if (deleting && c === 0) {
+                    deleting = false;
+                    t = (t + 1) % things.length;
+                }
+                setTimeout(tick, deleting ? 25 : 55);
             }
+
+            if (still) out.textContent = things.join(" ");
+            else tick();
         </script>
     </body>
 </html>

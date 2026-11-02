@@ -8,19 +8,17 @@
         <link rel="canonical" href="https://www.bennowo.de/projects" />
         <link
             rel="icon"
-            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%235f7a52'/%3E%3Ctext x='50' y='70' font-size='60' font-family='system-ui,sans-serif' font-weight='800' text-anchor='middle' fill='%23fff'%3EB%3C/text%3E%3C/svg%3E"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23ad4824'/%3E%3Ctext x='50' y='70' font-size='60' font-family='system-ui,sans-serif' font-weight='800' text-anchor='middle' fill='%23fff'%3EB%3C/text%3E%3C/svg%3E"
         />
         <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
             rel="stylesheet"
         />
-        <script src="scripts/theme.js"></script>
         <link rel="stylesheet" href="css/styles.css" />
         <link rel="stylesheet" href="css/projects.css" />
         <link rel="manifest" href="manifest.webmanifest" />
         <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-        <meta name="theme-color" content="#f6f7f2" media="(prefers-color-scheme: light)" />
-        <meta name="theme-color" content="#1a1c2c" media="(prefers-color-scheme: dark)" />
+        <meta name="theme-color" content="#fffaf6" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-title" content="Bennowo" />
     </head>
@@ -34,8 +32,8 @@
             </ul>
         </nav>
 
-        <div class="projects-container">
-            <h1 class="page-title">Projects</h1>
+        <main class="projects-container">
+            <h1 class="page-title name">projects</h1>
             <p class="page-subtitle">
                 things i&apos;ve built, mostly open source
             </p>
@@ -43,7 +41,7 @@
             <div class="projects-grid">
                 <!-- Projects will be loaded dynamically here -->
             </div>
-        </div>
+        </main>
 
         <dialog class="lightbox" onclick="this.close()">
             <img alt="" />
@@ -52,6 +50,7 @@
         <footer>© 2026 Bennowo · <a href="https://github.com/BennoCrafter" target="_blank" rel="noopener noreferrer">GitHub</a></footer>
 
         <script src="scripts/load_projects.js"></script>
+        <script src="scripts/hop.js"></script>
         <script src="scripts/sw-register.js"></script>
     </body>
 </html>

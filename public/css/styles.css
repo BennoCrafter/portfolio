@@ -1,66 +1,16 @@
-/* Themes: moss (light default), dusk (dark default), apricot. Picked via data-theme on <html>. */
-:root,
-:root[data-theme="moss"] {
-    --bg: #f6f7f2;
-    --surface: #ffffff;
-    --border: #dfe4d4;
-    --text: #1f2a1b;
-    --muted: #5f6b58;
-    --accent: #5f7a52;
-    --on-accent: #ffffff;
-    --accent-soft: rgba(95, 122, 82, 0.12);
-    --grad-a: #e3e9d6;
-    --grad-b: #5f7a52;
-    --radius: 16px;
-    --shadow: 0 1px 2px rgba(31, 42, 27, 0.04), 0 8px 24px rgba(31, 42, 27, 0.07);
-    color-scheme: light;
-}
-
-:root[data-theme="apricot"] {
+:root {
     --bg: #fffaf6;
     --surface: #ffffff;
     --border: #f1dfd1;
     --text: #2b1d16;
     --muted: #7a6458;
-    --accent: #c95a32;
+    --accent: #ad4824;
     --on-accent: #ffffff;
     --accent-soft: rgba(238, 125, 82, 0.14);
     --grad-a: #ffe3cc;
     --grad-b: #ee7d52;
+    --radius: 16px;
     --shadow: 0 1px 2px rgba(43, 29, 22, 0.04), 0 8px 24px rgba(43, 29, 22, 0.07);
-    color-scheme: light;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root:not([data-theme]) {
-        --bg: #1a1c2c;
-        --surface: #23253a;
-        --border: #363a52;
-        --text: #eceef4;
-        --muted: #a3adc0;
-        --accent: #b4bfd3;
-        --on-accent: #1a1c2c;
-        --accent-soft: rgba(141, 153, 174, 0.16);
-        --grad-a: #8d99ae;
-        --grad-b: #23253a;
-        --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.35);
-        color-scheme: dark;
-    }
-}
-
-:root[data-theme="dusk"] {
-    --bg: #1a1c2c;
-    --surface: #23253a;
-    --border: #363a52;
-    --text: #eceef4;
-    --muted: #a3adc0;
-    --accent: #b4bfd3;
-    --on-accent: #1a1c2c;
-    --accent-soft: rgba(141, 153, 174, 0.16);
-    --grad-a: #8d99ae;
-    --grad-b: #23253a;
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.35);
-    color-scheme: dark;
 }
 
 * {
@@ -149,31 +99,6 @@ nav ul li a[aria-current="page"] {
     background: var(--accent-soft);
 }
 
-.theme-dots {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 0 8px 0 6px;
-}
-
-.theme-dot {
-    width: 16px;
-    height: 16px;
-    padding: 0;
-    border-radius: 50%;
-    border: 1px solid var(--border);
-    cursor: pointer;
-    transition: transform 0.15s ease;
-}
-
-.theme-dot:hover {
-    transform: scale(1.15);
-}
-
-.theme-dot[aria-pressed="true"] {
-    box-shadow: 0 0 0 2px var(--surface), 0 0 0 3.5px var(--text);
-}
-
 /* ---------------------------------------------------
    Shared page header (About / Projects)
 --------------------------------------------------- */
@@ -184,39 +109,15 @@ nav ul li a[aria-current="page"] {
     padding: 140px 24px 80px;
 }
 
-.page-title {
-    font-size: 44px;
-    font-weight: 800;
+.name.page-title {
     margin: 0;
-    text-align: center;
+    font-size: clamp(56px, 14vw, 96px);
 }
 
 .page-subtitle {
-    font-size: 16px;
+    font-size: clamp(18px, 2.4vw, 22px);
     color: var(--muted);
-    text-align: center;
-    margin: 10px 0 40px;
-}
-
-/* ---------------------------------------------------
-   Avatar, used on Home + About
---------------------------------------------------- */
-
-.avatar-stamp {
-    flex-shrink: 0;
-    width: 180px;
-    height: 180px;
-    border-radius: 28px;
-    object-fit: cover;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow);
-}
-
-.avatar-stamp--small {
-    width: 140px;
-    height: 140px;
-    border-radius: 24px;
+    margin: 14px 0 48px;
 }
 
 /* ---------------------------------------------------
@@ -231,50 +132,89 @@ nav ul li a[aria-current="page"] {
     padding: 120px 24px 60px;
 }
 
-.hero-card {
+.stage {
+    width: min(880px, 100%);
+}
+
+.hi {
     display: flex;
     align-items: center;
-    gap: 56px;
-    max-width: 880px;
-}
-
-.hero-text {
-    width: 500px;
-    max-width: 100%;
-}
-
-.eyebrow {
-    font-family: "JetBrains Mono", ui-monospace, monospace;
-    font-size: 13px;
-    color: var(--accent);
-    margin: 0 0 12px;
-}
-
-.hero-text h1 {
-    font-size: 72px;
-    font-weight: 800;
-    margin: 0 0 16px;
-    line-height: 1;
-    letter-spacing: -0.04em;
-}
-
-#about-p {
-    font-size: 20px;
-    line-height: 1.6;
-    color: var(--muted);
-    min-height: 3.2em;
+    gap: 14px;
     margin: 0;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--muted);
 }
 
-#about-p::after {
+.hi img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    transition: transform 0.4s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+.hi img:hover {
+    transform: rotate(-12deg) scale(1.1);
+}
+
+.hi + .name {
+    margin-top: 8px;
+}
+
+/* Big bouncy headings, split into letters by scripts/hop.js */
+.name {
+    margin: 0;
+    font-size: clamp(88px, 18vw, 96px);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: var(--text);
+    cursor: default;
+    user-select: none;
+}
+
+.name span {
+    display: inline-block;
+    transition:
+        transform 0.35s cubic-bezier(0.3, 1.8, 0.5, 1),
+        color 0.2s ease;
+}
+
+.name span:hover,
+.name span.hop {
+    transform: translateY(-0.18em) rotate(-6deg);
+    color: var(--accent);
+}
+
+.builds {
+    margin: 22px 0 0;
+    font-size: clamp(20px, 3vw, 26px);
+    line-height: 1.4;
+    color: var(--muted);
+}
+
+.builds strong {
+    font-weight: 600;
+    color: var(--text);
+    border-bottom: 3px solid var(--accent-soft);
+}
+
+.builds strong::after {
     content: "";
     display: inline-block;
     width: 2px;
-    height: 1.1em;
-    margin-left: 3px;
-    vertical-align: text-bottom;
+    height: 1em;
+    margin-left: 2px;
+    vertical-align: -0.1em;
     background: var(--accent);
     animation: caret-blink 1s steps(1) infinite;
+}
+
+.stage .socials-container {
+    margin-top: 34px;
 }
 
 @keyframes caret-blink {
@@ -324,55 +264,81 @@ nav ul li a[aria-current="page"] {
    About page
 --------------------------------------------------- */
 
-.about-grid {
+.about-intro {
     display: flex;
-    gap: 48px;
-    align-items: flex-start;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 48px;
+    align-items: center;
+    gap: 28px;
 }
 
-.about-copy {
-    flex: 1;
-    min-width: 280px;
-    max-width: 520px;
-    font-size: 17px;
-    line-height: 1.75;
+.about-intro img {
+    flex-shrink: 0;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    transition: transform 0.4s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+.about-intro img:hover {
+    transform: rotate(10deg) scale(1.08);
+}
+
+.about-lead {
+    margin: 0;
+    font-size: clamp(22px, 3.2vw, 30px);
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.015em;
+    color: var(--text);
+}
+
+.about-note {
+    margin: 28px 0 0;
+    font-size: 18px;
+    line-height: 1.6;
     color: var(--muted);
-}
-
-.about-copy p {
-    margin: 0 0 18px;
 }
 
 .ticket-list {
     list-style: none;
-    margin: 28px 0 0;
+    margin: 48px 0 0;
     padding: 0;
-    display: grid;
-    gap: 10px;
+    border-top: 1px solid var(--border);
 }
 
 .ticket-list li {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 14px 18px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    font-size: 15px;
+    gap: 18px;
+    padding: 20px 4px;
+    border-bottom: 1px solid var(--border);
+    font-size: clamp(19px, 2.6vw, 24px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
     color: var(--text);
+    transition: transform 0.35s cubic-bezier(0.3, 1.6, 0.5, 1);
 }
 
 .ticket-list li::before {
     content: "";
     flex-shrink: 0;
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     background: var(--accent);
+    transition: transform 0.35s cubic-bezier(0.3, 1.8, 0.5, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .ticket-list li:hover {
+        transform: translateX(8px);
+    }
+
+    .ticket-list li:hover::before {
+        transform: scale(1.7);
+    }
 }
 
 .tv-section {
@@ -384,9 +350,9 @@ nav ul li a[aria-current="page"] {
 }
 
 .tv-label {
-    font-family: "JetBrains Mono", ui-monospace, monospace;
-    font-size: 13px;
-    color: var(--accent);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--muted);
     margin: 0;
 }
 
@@ -566,24 +532,6 @@ footer {
 --------------------------------------------------- */
 
 @media (max-width: 768px) {
-    .hero-card {
-        flex-direction: column;
-        text-align: center;
-        gap: 32px;
-    }
-
-    .hero-text h1 {
-        font-size: 52px;
-    }
-
-    #about-p {
-        font-size: 17px;
-    }
-
-    .socials-container {
-        justify-content: center;
-    }
-
     nav ul li a {
         padding: 8px 14px;
     }
@@ -592,12 +540,10 @@ footer {
         padding: 120px 20px 60px;
     }
 
-    .page-title {
-        font-size: 34px;
-    }
-
-    .about-grid {
-        justify-content: center;
+    .about-intro {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
     }
 }
 
