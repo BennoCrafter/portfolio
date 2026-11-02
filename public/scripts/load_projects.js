@@ -2,10 +2,10 @@ const PLACEHOLDER_IMG =
     "data:image/svg+xml," +
     encodeURIComponent(
         '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300">' +
-            '<rect width="100%" height="100%" fill="#e2d3b3"/>' +
-            '<rect x="8" y="8" width="384" height="284" fill="none" stroke="#2b2420" stroke-width="3" stroke-dasharray="10 6"/>' +
-            '<text x="50%" y="52%" font-family="Georgia, serif" font-size="22" fill="#2b2420" text-anchor="middle">NO PHOTO</text>' +
-            '<text x="50%" y="64%" font-family="Georgia, serif" font-size="13" fill="#5c4f42" text-anchor="middle">on file</text>' +
+            '<rect width="100%" height="100%" fill="#e4e4e7"/>' +
+            '<rect x="8" y="8" width="384" height="284" fill="none" stroke="#a1a1aa" stroke-width="2" stroke-dasharray="8 6" rx="12"/>' +
+            '<text x="50%" y="52%" font-family="system-ui, sans-serif" font-size="22" fill="#a1a1aa" text-anchor="middle">NO PHOTO</text>' +
+            '<text x="50%" y="64%" font-family="system-ui, sans-serif" font-size="13" fill="#71717a" text-anchor="middle">on file</text>' +
             "</svg>",
     );
 

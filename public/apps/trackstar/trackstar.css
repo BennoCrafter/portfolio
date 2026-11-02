@@ -35,17 +35,32 @@ a {
     color: inherit;
 }
 
+/* same floating pill as the portfolio nav, in TrackStar colors */
 nav {
+    position: sticky;
+    top: 16px;
+    z-index: 1000;
     display: flex;
-    justify-content: center;
-    gap: 28px;
-    padding: 20px 16px;
-    font-size: 14px;
+    gap: 4px;
+    width: fit-content;
+    margin: 16px auto 0;
+    padding: 6px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 nav a {
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
     color: var(--muted);
     text-decoration: none;
+    transition: color 0.15s ease;
 }
 
 nav a:hover {
