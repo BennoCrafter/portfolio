@@ -44,9 +44,6 @@ function createProjectCard(project) {
         <div class="project-content">
             <h3>${project.name}</h3>
             <p>${project.description}</p>
-            <div class="project-tags">
-                ${project.technologies.map((tech) => `<span>${tech}</span>`).join("")}
-            </div>
             <div class="project-links">
                 ${hasLive ? `<a href="${project.links.live}" class="project-link" target="_blank" rel="noopener noreferrer">Live ${linkIcon}</a>` : ""}
                 <a href="${project.links.github}" class="project-link" target="_blank" rel="noopener noreferrer">GitHub ${linkIcon}</a>
