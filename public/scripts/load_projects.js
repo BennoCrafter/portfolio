@@ -34,7 +34,7 @@ function createProjectCard(project) {
 
     const hasLive = Boolean(project.links.live);
     const linkIcon = `<svg class="external-link-icon" viewBox="0 0 24 24" width="16" height="16">
-        <path fill="currentColor" d="M21 13v7a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h7v2H5v14h14v-6h2zm3-8h-6V3h6v2z"/>
+        <path fill="currentColor" d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
     </svg>`;
 
     card.innerHTML = `
