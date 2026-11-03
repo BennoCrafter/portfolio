@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3002;
 app.use(express.static(path.join(__dirname, "public"), { extensions: ["html"] }));
 
 app.use((req, res) => {
-  res.status(404).send("Page not found");
+  res.status(404).sendFile(path.join(__dirname, "public", "404.html"));
 });
 
 app.listen(PORT, () => {

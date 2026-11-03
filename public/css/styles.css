@@ -508,6 +508,10 @@ nav ul li a[aria-current="page"] {
         filter 0.15s ease;
 }
 
+a.zap-button {
+    text-decoration: none;
+}
+
 .zap-button:hover {
     filter: brightness(1.1);
 }
