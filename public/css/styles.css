@@ -147,8 +147,8 @@ nav ul li a[aria-current="page"] {
 }
 
 .hi img {
-    width: 64px;
-    height: 64px;
+    width: 96px;
+    height: 96px;
     border-radius: 50%;
     object-fit: cover;
     border: 1px solid var(--border);
@@ -272,8 +272,8 @@ nav ul li a[aria-current="page"] {
 
 .about-intro img {
     flex-shrink: 0;
-    width: 120px;
-    height: 120px;
+    width: 168px;
+    height: 168px;
     border-radius: 50%;
     object-fit: cover;
     border: 1px solid var(--border);

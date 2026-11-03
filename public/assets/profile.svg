@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <path id="body" d="M190 500 C270 500 360 530 450 470 L720 470 C810 560 840 650 805 735
+                       C770 825 640 855 495 842 C350 830 250 760 225 640 C215 585 200 545 190 500Z"/>
+    <circle id="head" cx="600" cy="370" r="160"/>
+  </defs>
+
+  <style>
+    .duck  { transform-origin: 512px 860px; animation: bob 2.6s ease-in-out infinite alternate; }
+    .wing  { transform-box: fill-box; transform-origin: 0 0; animation: flap 1.3s ease-in-out infinite alternate; }
+    .eye   { transform-box: fill-box; transform-origin: center; animation: blink 4.5s infinite; }
+    .look  { animation: look 7s ease-in-out infinite; }
+    .waves { animation: drift 3.2s ease-in-out infinite alternate; }
+    @keyframes bob   { from { transform: translateY(0) rotate(-3deg); } to { transform: translateY(-22px) rotate(3deg); } }
+    @keyframes flap  { from { transform: rotate(-4deg); } to { transform: rotate(8deg); } }
+    @keyframes blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(.1); } }
+    @keyframes look  { 0%, 30% { transform: translate(0, 0); } 36%, 55% { transform: translate(-16px, 4px); } 61%, 75% { transform: translate(6px, -6px); } 81%, 100% { transform: translate(0, 0); } }
+    @keyframes drift { from { transform: translateX(-18px); } to { transform: translateX(18px); } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+
+  <rect width="1024" height="1024" fill="#ffe3cc"/>
+
+  <!-- water ripples -->
+  <g class="waves" fill="none" stroke="#ee7d52" stroke-opacity=".55" stroke-width="18" stroke-linecap="round">
+    <path d="M180 880 q40 -26 80 0 t80 0"/>
+    <path d="M680 890 q40 -26 80 0 t80 0"/>
+    <path d="M400 945 q40 -26 80 0 t80 0 t80 0"/>
+  </g>
+
+  <g class="duck">
+  <g stroke="#2b1d16" stroke-linecap="round" stroke-linejoin="round" transform="rotate(-6 512 512)">
+    <!-- outline of head+body as one shape: thick strokes, then white fills over the inner half -->
+    <g stroke-width="52" fill="#2b1d16">
+      <use href="#body"/>
+      <use href="#head"/>
+    </g>
+    <g fill="#fff" stroke="none">
+      <use href="#body"/>
+      <use href="#head"/>
+    </g>
+
+    <!-- wing -->
+    <path class="wing" d="M330 640 C410 640 465 665 500 715" fill="none" stroke-width="24"/>
+
+    <!-- beak -->
+    <path d="M735 375 C790 355 845 368 868 398 C845 435 790 448 740 432 C728 412 728 392 735 375Z"
+          fill="#f5c518" stroke-width="20"/>
+
+    <!-- face -->
+    <g class="look"><g class="eye">
+      <ellipse cx="668" cy="338" rx="24" ry="28" fill="#2b1d16" stroke="none"/>
+      <circle cx="660" cy="327" r="9" fill="#fff" stroke="none"/>
+    </g></g>
+    <ellipse cx="660" cy="440" rx="30" ry="16" fill="#f6c1c1" stroke="none"/>
+  </g>
+  </g>
+</svg>
