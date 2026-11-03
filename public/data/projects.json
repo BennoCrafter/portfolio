@@ -3,34 +3,31 @@
     {
       "id": 1,
       "name": "Timetable Manager",
-      "description": "The ultimate app to plan your schedule, stay on top of tasks, track grades, and manage tests effortlessly.",
+      "description": "Timetable, homework, exams and grades in one app. Share homework and tests with your friends.",
       "image": "data/assets/TimetableManager/dashboard-theme.png",
-      "imageFit": "contain",
-      "technologies": ["Swift", "SwiftUI", "sqlite-data"],
+      "technologies": [
+        "Swift",
+        "SwiftUI",
+        "sqlite-data"
+      ],
       "links": {
-        "github": "https://github.com/BennoCrafter/Timetable",
-        "live": "https://get-timetable.vercel.app"
-      }
+        "github": "https://github.com/BennoCrafter/TimetableSupport",
+        "live": "https://timetablemanager.app"
+      },
+      "imageFit": "contain"
     },
     {
-      "id": 2,
-      "name": "Wallhaven Desktop",
-      "description": "Desktop app for Wallhaven natively written in SwiftUI",
-      "image": "data/assets/WallhavenDesktop/home.jpg",
-      "technologies": ["Swift", "Kingfisher"],
+      "id": 13,
+      "name": "Screenshot Studio",
+      "description": "Make App Store screenshots for iPhone, iPad and Mac, with 3D device frames, languages and a built-in MCP server for AI agents.",
+      "image": "/apps/screenshot-studio/editor.png",
+      "technologies": [
+        "TypeScript",
+        "Tauri"
+      ],
       "links": {
-        "github": "https://github.com/BennoCrafter/wallhaven-desktop"
-      }
-    },
-    {
-      "id": 3,
-      "name": "Matrix Poll Bot",
-      "description": "A handy bot for creating and managing polls in Matrix rooms.",
-      "image": "data/assets/PollMatrixBot/icon.png",
-      "technologies": ["Python", "simplematrixbotlib"],
-      "links": {
-        "github": "https://github.com/BennoCrafter/PollMatrixBot",
-        "live": ""
+        "github": "https://github.com/BennoCrafter/screenshot-studio",
+        "live": "/apps/screenshot-studio/"
       }
     },
     {
@@ -38,20 +35,26 @@
       "name": "TrackStar",
       "description": "Hitster-inspired open-source game, where players guess the release year of songs to create a chronological timeline with the ability to use your own custom datasets.",
       "image": "/apps/trackstar/song_cards.png",
-      "technologies": ["Python", "Swift"],
+      "technologies": [
+        "Python",
+        "Swift"
+      ],
       "links": {
         "github": "https://github.com/BennoCrafter/TrackStar",
         "live": "/apps/trackstar/"
       }
     },
     {
-      "id": 5,
-      "name": "Observice",
-      "description": "Monitor location or objects easily with Observice integrated into Discord.",
-      "image": "data/assets/Observice/observice.png",
-      "technologies": ["Python"],
+      "id": 3,
+      "name": "Matrix Poll Bot",
+      "description": "A handy bot for creating and managing polls in Matrix rooms.",
+      "image": "data/assets/PollMatrixBot/icon.png",
+      "technologies": [
+        "Python",
+        "simplematrixbotlib"
+      ],
       "links": {
-        "github": "https://github.com/bennocrafter/observice",
+        "github": "https://github.com/BennoCrafter/PollMatrixBot",
         "live": ""
       }
     },
@@ -60,10 +63,38 @@
       "name": "streamstats",
       "description": "A local dashboard for your own Netflix and Prime Video streaming history: hours watched, money spent, and more.",
       "image": "data/assets/streamstats/preview.png",
-      "technologies": ["Python"],
+      "technologies": [
+        "Python"
+      ],
       "links": {
         "github": "https://github.com/BennoCrafter/streamstats",
         "live": ""
+      }
+    },
+    {
+      "id": 5,
+      "name": "Observice",
+      "description": "Monitor location or objects easily with Observice integrated into Discord.",
+      "image": "data/assets/Observice/observice.png",
+      "technologies": [
+        "Python"
+      ],
+      "links": {
+        "github": "https://github.com/bennocrafter/observice",
+        "live": ""
+      }
+    },
+    {
+      "id": 2,
+      "name": "Wallhaven Desktop",
+      "description": "Desktop app for Wallhaven natively written in SwiftUI",
+      "image": "data/assets/WallhavenDesktop/home.jpg",
+      "technologies": [
+        "Swift",
+        "Kingfisher"
+      ],
+      "links": {
+        "github": "https://github.com/BennoCrafter/wallhaven-desktop"
       }
     },
     {
@@ -71,7 +102,10 @@
       "name": "DataWorker",
       "description": "A simple, local database for macOS, inspired by Bento.",
       "image": "data/assets/DataWorker/preview.png",
-      "technologies": ["Deno", "TypeScript"],
+      "technologies": [
+        "Deno",
+        "TypeScript"
+      ],
       "links": {
         "github": "https://github.com/BennoCrafter/DataWorker",
         "live": ""
@@ -82,7 +116,10 @@
       "name": "Schule Infoportal",
       "description": "An improved website for schule-infoportal.de/infoscreen, showing substitutions and school news.",
       "image": "data/assets/SchuleInfoportal/preview.png",
-      "technologies": ["TypeScript", "Next.js"],
+      "technologies": [
+        "TypeScript",
+        "Next.js"
+      ],
       "links": {
         "github": "https://github.com/BennoCrafter/schule-infoportal",
         "live": "https://schule-infoportal.vercel.app"
@@ -93,21 +130,14 @@
       "name": "linkshelf",
       "description": "Clean and simple URL bookmarking site.",
       "image": "data/assets/linkshelf/light.png",
-      "technologies": ["JavaScript", "HTML", "CSS"],
+      "technologies": [
+        "JavaScript",
+        "HTML",
+        "CSS"
+      ],
       "links": {
         "github": "https://github.com/BennoCrafter/linkshelf",
         "live": "https://linkshelf-space.vercel.app"
-      }
-    },
-    {
-      "id": 10,
-      "name": "Framr",
-      "description": "Transform your favourite albums, movies, and series into stunning posters, perfect for upgrading your room.",
-      "image": "data/assets/Framr/icon.png",
-      "technologies": ["TypeScript", "Next.js"],
-      "links": {
-        "github": "https://github.com/BennoCrafter/Framr",
-        "live": ""
       }
     },
     {
@@ -115,9 +145,26 @@
       "name": "GoFlow",
       "description": "A desktop app for building visual layouts and dashboards out of widgets.",
       "image": "data/assets/GoFlow/preview.png",
-      "technologies": ["JavaScript", "Electron"],
+      "technologies": [
+        "JavaScript",
+        "Electron"
+      ],
       "links": {
         "github": "https://github.com/BennoCrafter/GoFlow",
+        "live": ""
+      }
+    },
+    {
+      "id": 10,
+      "name": "Framr",
+      "description": "Transform your favourite albums, movies, and series into stunning posters, perfect for upgrading your room.",
+      "image": "data/assets/Framr/icon.png",
+      "technologies": [
+        "TypeScript",
+        "Next.js"
+      ],
+      "links": {
+        "github": "https://github.com/BennoCrafter/Framr",
         "live": ""
       }
     }

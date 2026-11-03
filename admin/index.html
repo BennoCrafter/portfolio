@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Edit Projects</title>
+        <link rel="stylesheet" href="/css/styles.css" />
+        <style>
+            main { display: grid; grid-template-columns: minmax(0, 560px) minmax(0, 1fr); gap: 2rem; margin: 2rem auto; padding: 0 16px; max-width: 1600px; }
+            .preview { position: sticky; top: 1rem; height: calc(100vh - 2rem); display: flex; flex-direction: column; }
+            .preview h2 { margin-top: 0; color: var(--muted); font-size: 1rem; }
+            .preview iframe { flex: 1; width: 100%; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg); }
+            @media (max-width: 900px) { main { grid-template-columns: 1fr; } .preview { position: static; height: 80vh; } }
+            .bar { display: flex; gap: 0.5rem; align-items: center; margin-bottom: 1rem; position: sticky; top: 0; background: var(--bg); padding: 0.5rem 0; z-index: 1; }
+            .bar .status { color: var(--muted); margin-left: auto; }
+            .item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 0.75rem; display: grid; gap: 0.5rem; }
+            .item header { display: flex; gap: 0.5rem; align-items: center; }
+            .item header strong { flex: 1; }
+            label { display: grid; gap: 0.2rem; font-size: 0.85rem; color: var(--muted); }
+            input, textarea, select { font: inherit; color: var(--text); background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 0.4rem 0.6rem; }
+            textarea { min-height: 4rem; resize: vertical; }
+            .row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+            button { font: inherit; cursor: pointer; border: 1px solid var(--border); background: var(--surface); color: var(--text); border-radius: 8px; padding: 0.3rem 0.7rem; }
+            button.primary { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+            button:disabled { opacity: 0.4; cursor: default; }
+            .handle { cursor: grab; color: var(--muted); padding: 0 0.25rem; user-select: none; }
+            /* while dragging, every card shrinks to its header line */
+            #list.dragging .item > :not(header) { display: none; }
+            #list.dragging .item { padding: 0.5rem 1rem; margin-bottom: 0.4rem; }
+            .item.drag-source { opacity: 0.4; }
+            @media (max-width: 560px) { .row { grid-template-columns: 1fr; } }
+        </style>
+    </head>
+    <body>
+        <main>
+          <div>
+            <h1>Edit Projects</h1>
+            <div class="bar">
+                <button id="add">+ Add project</button>
+                <button id="save" class="primary">Save</button>
+                <span class="status" id="status" role="status"></span>
+            </div>
+            <div id="list"></div>
+          </div>
+            <aside class="preview" aria-label="Live preview">
+                <h2>Live preview (unsaved)</h2>
+                <iframe src="/projects" title="Projects page preview"></iframe>
+            </aside>
+        </main>
+        <script>
+            let projects = [];
+            const list = document.getElementById("list");
+            const status = document.getElementById("status");
+            const setStatus = (text) => (status.textContent = text);
+            // the real /projects page, with its grid re-rendered by its own createProjectCard from the unsaved data
+            const frame = document.querySelector(".preview iframe");
+            const renderPreview = () => {
+                const win = frame.contentWindow;
+                const grid = win?.document.querySelector(".projects-grid");
+                if (grid && win.createProjectCard) grid.replaceChildren(...projects.map(win.createProjectCard));
+            };
+            frame.addEventListener("load", () => {
+                const grid = frame.contentDocument.querySelector(".projects-grid");
+                if (grid.children.length) return renderPreview();
+                // let the page's own loader fill the grid with saved data first, then swap in ours
+                new MutationObserver((_, obs) => {
+                    obs.disconnect();
+                    renderPreview();
+                }).observe(grid, { childList: true });
+            });
+            const changed = () => {
+                setStatus("Unsaved changes");
+                renderPreview();
+            };
+
+            const field = (label, key, value, tag = "input") =>
+                `<label>${label}<${tag} data-key="${key}" ${tag === "input" ? `value="${escape(value)}">` : `>${escape(value)}</${tag}>`}</label>`;
+            const escape = (s = "") => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
+
+            function render() {
+                list.innerHTML = projects
+                    .map(
+                        (p, i) => `
+                    <section class="item" data-i="${i}">
+                        <header>
+                            <span class="handle" title="Drag to reorder" aria-hidden="true">⠿</span>
+                            <strong>${escape(p.name) || "Untitled"}</strong>
+                            <button data-act="up" ${i === 0 ? "disabled" : ""} aria-label="Move up">↑</button>
+                            <button data-act="down" ${i === projects.length - 1 ? "disabled" : ""} aria-label="Move down">↓</button>
+                            <button data-act="remove">Remove</button>
+                        </header>
+                        ${field("Name", "name", p.name)}
+                        ${field("Description", "description", p.description, "textarea")}
+                        <div class="row">
+                            ${field("Image path", "image", p.image)}
+                            <label>Image fit<select data-key="imageFit">
+                                ${["", "contain", "cover"].map((v) => `<option ${p.imageFit === v || (!p.imageFit && !v) ? "selected" : ""} value="${v}">${v || "default"}</option>`).join("")}
+                            </select></label>
+                        </div>
+                        <div class="row">
+                            ${field("GitHub URL", "links.github", p.links?.github)}
+                            ${field("Live URL", "links.live", p.links?.live)}
+                        </div>
+                        ${field("Technologies (comma separated)", "technologies", (p.technologies || []).join(", "))}
+                    </section>`,
+                    )
+                    .join("");
+                renderPreview();
+            }
+
+            list.addEventListener("input", (e) => {
+                const key = e.target.dataset.key;
+                if (!key) return;
+                const p = projects[e.target.closest(".item").dataset.i];
+                const v = e.target.value;
+                if (key === "technologies") p.technologies = v.split(",").map((t) => t.trim()).filter(Boolean);
+                else if (key === "imageFit") v ? (p.imageFit = v) : delete p.imageFit;
+                else if (key.startsWith("links.")) (p.links ??= {})[key.slice(6)] = v;
+                else p[key] = v;
+                changed();
+            });
+
+            list.addEventListener("click", (e) => {
+                const act = e.target.dataset.act;
+                if (!act) return;
+                const i = +e.target.closest(".item").dataset.i;
+                if (act === "remove" && !confirm(`Remove "${projects[i].name}"?`)) return;
+                if (act === "remove") projects.splice(i, 1);
+                else {
+                    const j = act === "up" ? i - 1 : i + 1;
+                    [projects[i], projects[j]] = [projects[j], projects[i]];
+                }
+                render();
+                changed();
+            });
+
+            // Drag to reorder: only the handle starts a drag, so text in inputs stays selectable
+            let dragged = null;
+            list.addEventListener("pointerdown", (e) => {
+                if (e.target.closest(".handle")) e.target.closest(".item").draggable = true;
+            });
+            list.addEventListener("pointerup", () => list.querySelectorAll("[draggable=true]").forEach((el) => (el.draggable = false)));
+            list.addEventListener("dragstart", (e) => {
+                dragged = e.target.closest(".item");
+                e.dataTransfer.effectAllowed = "move";
+                // drag ghost = just the header line, not the full card
+                const header = dragged.querySelector("header");
+                e.dataTransfer.setDragImage(header, e.clientX - header.getBoundingClientRect().left, header.offsetHeight / 2);
+                // collapse after the browser grabs the drag image; changing layout inside dragstart cancels the drag in Chrome
+                setTimeout(() => {
+                    list.classList.add("dragging");
+                    dragged.classList.add("drag-source");
+                });
+            });
+            list.addEventListener("dragover", (e) => {
+                const over = e.target.closest(".item");
+                if (!dragged || !over) return;
+                e.preventDefault();
+                if (over === dragged) return;
+                const { top, height } = over.getBoundingClientRect();
+                list.insertBefore(dragged, e.clientY < top + height / 2 ? over : over.nextSibling);
+            });
+            list.addEventListener("drop", (e) => e.preventDefault());
+            list.addEventListener("dragend", () => {
+                const order = [...list.children].map((el) => projects[el.dataset.i]);
+                const moved = order.some((p, i) => p !== projects[i]);
+                projects = order;
+                dragged = null;
+                list.classList.remove("dragging");
+                render();
+                if (moved) changed();
+            });
+
+            document.getElementById("add").onclick = () => {
+                const id = Math.max(0, ...projects.map((p) => p.id)) + 1;
+                projects.unshift({ id, name: "", description: "", image: "", technologies: [], links: { github: "", live: "" } });
+                render();
+                list.querySelector("input").focus();
+                changed();
+            };
+
+            document.getElementById("save").onclick = async () => {
+                const res = await fetch("/api/projects", {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ projects }),
+                });
+                setStatus(res.ok ? "Saved ✓" : `Save failed: ${res.status} ${await res.text()}`);
+            };
+
+            window.addEventListener("beforeunload", (e) => {
+                if (status.textContent === "Unsaved changes") e.preventDefault();
+            });
+
+            fetch("/data/projects.json", { cache: "no-store" })
+                .then((r) => r.json())
+                .then((d) => {
+                    projects = d.projects;
+                    render();
+                })
+                .catch((err) => setStatus(`Couldn't load projects: ${err.message}`));
+        </script>
+    </body>
+</html>
