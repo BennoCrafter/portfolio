@@ -24,7 +24,7 @@ async function loadProjects() {
     } catch (error) {
         console.error("Error loading projects:", error);
         document.querySelector(".projects-grid").textContent =
-            "couldn't load projects right now. try again later, or check out my GitHub.";
+            "couldn't load projects right now. try again later, or check out my github.";
     }
 }
 

@@ -5,7 +5,7 @@ const socialConfig = [
     link: "https://discord.com/users/bennowo",
   },
   {
-    name: "GitHub",
+    name: "github",
     icon: "/assets/socials/github.svg",
     link: "https://github.com/BennoCrafter",
   },
