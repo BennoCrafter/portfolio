@@ -35,7 +35,7 @@
             <div class="stage">
                 <p class="hi"><img src="assets/profile.svg" alt="Profile photo" /> hey, i'm</p>
                 <h1 class="name">benno</h1>
-                <p class="builds">a hobby developer who builds <strong id="thing"></strong></p>
+                <p class="builds">a hobby developer who <strong id="thing"></strong></p>
                 <div class="socials-container" id="socials-container"></div>
             </div>
         </main>
@@ -47,7 +47,7 @@
         <script src="scripts/sw-register.js"></script>
         <script>
             // Things from the About page, typed out one after another
-            const things = ["iOS apps with SwiftUI.", "bots and tools in python.", "stuff for my school.", "almost everything open source."];
+            const things = ["builds iOS apps.", "builds python tools.", "contributes to open source."];
             const out = document.getElementById("thing");
             const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
             let t = 0;
