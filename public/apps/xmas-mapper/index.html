@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>xmas-mapper — Bennowo</title>
+        <link rel="canonical" href="https://www.bennowo.de/apps/xmas-mapper/" />
+        <meta name="description" content="xmas-mapper: scan a Christmas tree's LED string into a 3D point cloud. Notes on cracking the Govee H6871 BLE protocol, plus live demos." />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+        <meta name="theme-color" content="#fffaf6" />
+        <style>
+            * { box-sizing: border-box; }
+            body { margin: 0; background: #fffaf6; color: #2b1d16; font: 17px/1.7 Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+            a { color: #ad4824; text-underline-offset: 3px; }
+            .wrap { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+            nav { display: flex; justify-content: space-between; padding: 24px 0; }
+            nav a { color: #7a6458; text-decoration: none; }
+            nav a:hover { color: #2b1d16; }
+            header { padding: 48px 0 8px; }
+            h1 { margin: 0 0 8px; font-size: 2.6rem; letter-spacing: -0.03em; line-height: 1.15; }
+            h2 { margin: 56px 0 8px; font-size: 1.4rem; letter-spacing: -0.02em; }
+            .muted { color: #7a6458; font-size: 0.95rem; }
+            code { font: 0.85em "JetBrains Mono", monospace; background: #f6ebe2; border-radius: 4px; padding: 1px 5px; }
+            pre { margin: 20px 0; padding: 16px 20px; overflow-x: auto; border-radius: 10px; background: #f6ebe2; font: 0.85rem/1.6 "JetBrains Mono", monospace; }
+            pre code { background: none; padding: 0; }
+            figure { margin: 28px 0; }
+            figure img { display: block; width: 100%; height: auto; border-radius: 10px; }
+            figcaption { margin-top: 8px; color: #7a6458; font-size: 0.9rem; }
+            .demo { margin: 28px 0; padding: 20px; border: 1px solid #f1dfd1; border-radius: 12px; background: #fff; }
+            .demo-label { margin: 0 0 14px; color: #7a6458; font-size: 0.95rem; }
+            .row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+            input[type="number"] { width: 100px; padding: 8px 12px; border-radius: 8px; border: 1px solid #e3cfc0; background: #fff; color: inherit; font: 1rem "JetBrains Mono", monospace; }
+            .btn { padding: 8px 16px; border-radius: 8px; border: 1px solid #e3cfc0; background: #fff; color: inherit; font: inherit; font-size: 0.95rem; cursor: pointer; }
+            .btn:hover { border-color: #ad4824; }
+            .btn[aria-pressed="true"] { background: #2b1d16; border-color: #2b1d16; color: #fff; }
+            .pairs { display: flex; flex-wrap: wrap; gap: 12px; margin: 18px 0 6px; }
+            .pair { display: grid; gap: 4px; text-align: center; font: 0.75rem "JetBrains Mono", monospace; color: #7a6458; }
+            .pair i { width: 48px; height: 28px; border-radius: 5px; }
+            .pair.on { color: #2b1d16; font-weight: 500; }
+            .pair.check i:first-of-type { outline: 1px dashed #b39a8c; outline-offset: 3px; }
+            /* LEDs need the dark to show, so only the light-up bits are dark */
+            .bulb { width: 56px; height: 56px; border-radius: 50%; background: #1d1612; transition: background 0.08s, box-shadow 0.08s; }
+            .mono { font-family: "JetBrains Mono", monospace; color: #7a6458; font-size: 0.85rem; }
+            canvas { display: block; width: 100%; height: 420px; margin-top: 14px; border-radius: 8px; background: #1d1612; touch-action: none; cursor: grab; }
+            footer { padding: 56px 0 40px; color: #7a6458; font-size: 0.9rem; }
+            @media (max-width: 600px) { h1 { font-size: 2.1rem; } .demo { padding: 14px; } canvas { height: 340px; } }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <nav>
+                <a href="/">bennowo.de</a>
+                <a href="/projects">← all projects</a>
+            </nav>
+
+            <article>
+                <header>
+                    <h1>xmas-mapper</h1>
+                    <p>
+                        i have a Govee H6871 tree light: 375 LEDs you can set one by one. but only via. app. The open lan api, of course, doesnt support to adress each LED, and turning the tree into a 3D point cloud.
+                    </p>
+                    <p class="muted">had the idea in 2025 · working since nov. 26 · <a href="https://github.com/BennoCrafter/xmas-mapper" target="_blank" rel="noopener noreferrer">code on GitHub</a> · <a href="#demo-tree">jump to the demo</a></p>
+                </header>
+
+                <h2>the plan</h2>
+                <p>wrap the string around a tree however you want. then:</p>
+                <ol>
+                    <li>talk to the light over Bluetooth</li>
+                    <li>which encodes the LED id into a blinking pattern</li>
+                    <li>film it, find the bright blobs and assign temporary IDs</li>
+                    <li>blobs should stay over frames</li>
+                    <!--<li>do that from a few sides, so every LED gets an x, y and z</li>-->
+                    <li>play effects that use real positions: a sweep from bottom to top, snow falling, </li>
+                </ol>
+
+                <h2>step 1: cracking the bluetooth</h2>
+                <p>
+                    this light only answers to encrypted packets. i logged the Govee Home app with Apple's PacketLogger and stared at bytes for way too long. i researched and found out, that govee is using a 16-byte handshake key, then AES-128-ECB for full blocks and RC4 for leftover bytes. the handshake is always the same, so i can just hardcode it
+                </p>
+<pre><code>key    = "MakingLifeSmarte"         # 16 bytes, for the handshake
+cipher = AES-128-ECB(full 16-byte blocks) + RC4(leftover bytes)
+TX e7 01 &lt;random&gt;  →  RX e7 01 &lt;session key&gt;</code></pre>
+                <p>
+                    after that you can draw: a list of color groups, each with the LEDs it lights. the annoying part was splitting. the app cuts big drawings into 505-byte parts, numbers them, and the light only draws as many parts as the header announces. one wrong byte and nothing happens, no error. all the details are in <a href="https://github.com/BennoCrafter/xmas-mapper/blob/main/H6871.md" target="_blank" rel="noopener noreferrer">H6871.md</a>.
+                </p>
+
+                <h2>step 2: every LED says its own name</h2>
+                <p>
+                    the camera has to tell 375 LEDs apart. blinking them one after another would take forever, so they all blink at once, each one its own color code. the ID becomes base-4 digits, and each digit is one of 4 colors (never white or black). a check digit at the end catches misreads.
+                </p>
+                <p>
+                    each color is sent twice: first normal, then inverted (red, then cyan). the camera doesn't need to know what "red" looks like in my room. it only checks whether each channel got brighter or darker. that's basically <a href="https://en.wikipedia.org/wiki/Manchester_code" target="_blank" rel="noopener noreferrer">Manchester code</a> with colors. a white flash separates the digits.
+                </p>
+
+                <div class="demo" id="demo-codec">
+                    <p class="demo-label">try it: blink an LED ID</p>
+                    <div class="row">
+                        <label for="led-id" class="mono">LED</label>
+                        <input id="led-id" type="number" min="0" max="374" value="174" />
+                        <button class="btn" id="play" type="button">▶ Blink</button>
+                        <div class="bulb" id="bulb" aria-hidden="true"></div>
+                    </div>
+                    <div class="pairs" id="pairs"></div>
+                    <p class="mono" id="codec-info"></p>
+                </div>
+
+                <h2>step 3: finding the dots</h2>
+                <p>
+                    the first try with OpenCV is simple: grayscale, blur, threshold, erode, dilate, then keep the blobs that are big enough. on a dark photo it already finds the LEDs nicely
+                </p>
+                <figure>
+                    <img src="/apps/xmas-mapper/detection.jpg" width="2000" height="1037" alt="Three windows: the threshold image and the mask with white dots, and the original dark photo of an LED string wrapped around a tree" loading="lazy" />
+                    <figcaption>left to right: threshold, mask, the original photo. v1 of the detector.</figcaption>
+                </figure>
+
+                <h2>why</h2>
+                <p>
+                    here's the point of all this.
+                </p>
+
+                <!--<div class="demo" id="demo-tree">
+                    <p class="demo-label">demo: simulated tree, 375 LEDs · drag to rotate</p>
+                    <div class="row" role="group" aria-label="Effect">
+                        <button class="btn" type="button" data-fx="wire" aria-pressed="true">Along the wire</button>
+                        <button class="btn" type="button" data-fx="height" aria-pressed="false">By height</button>
+                        <button class="btn" type="button" data-fx="plane" aria-pressed="false">Plane</button>
+                        <button class="btn" type="button" data-fx="scan" aria-pressed="false">Scanning</button>
+                    </div>
+                    <canvas id="tree" aria-label="Rotating 3D point cloud of a Christmas tree's LEDs"></canvas>
+                </div>-->
+
+                <!--<h2>run it yourself</h2>
+                <p>you need an H6870 or H6871 and Python. quit the Govee app first, the light only takes one connection.</p>
+<pre><code>python -m venv venv &amp;&amp; source venv/bin/activate
+pip install -r requirements.txt
+python main.py leds --scan          # find the light
+python main.py leds --fill ff0000   # whole tree red</code></pre>
+                <p>i'll update this page when the 3D scan works. probably right before christmas, as it should be.</p>-->
+            </article>
+
+            <footer>© 2026 Bennowo · <a href="https://github.com/BennoCrafter" target="_blank" rel="noopener noreferrer">GitHub</a></footer>
+        </div>
+        <script>
+            // Port of src/led_id_codec.py: base-6 digits (lowest first) + check digit, each sent as color then inverted color.
+            const SYMBOLS = [[1, 0, 0], [0, 1, 0], [0, 0, 1], [1, 1, 0], [1, 0, 1], [0, 1, 1]];
+            const N_LEDS = 375;
+            const N_DIGITS = Math.ceil(Math.log(N_LEDS) / Math.log(6));
+            const encode = (id) => {
+                const digits = [];
+                for (let i = 0; i < N_DIGITS; i++) digits.push(id % 6), (id = Math.floor(id / 6));
+                digits.push(digits.reduce((a, b) => a + b, 0) % 6);
+                return digits;
+            };
+            const css = (c) => `rgb(${c.map((v) => v * 255)})`;
+            const inv = (c) => c.map((v) => 1 - v);
+            console.assert([0, 11, 174, 374].every((n) => encode(n).slice(0, -1).reduce((s, d, i) => s + d * 6 ** i, 0) === n), 'codec round trip');
+
+            const input = document.getElementById('led-id');
+            const pairsEl = document.getElementById('pairs');
+            const bulb = document.getElementById('bulb');
+            let timer;
+            const render = () => {
+                const id = Math.min(N_LEDS - 1, Math.max(0, input.valueAsNumber || 0));
+                const digits = encode(id);
+                pairsEl.innerHTML = digits
+                    .map((d, i) => `<div class="pair${i === N_DIGITS ? ' check' : ''}"><i style="background:${css(SYMBOLS[d])}"></i><i style="background:${css(inv(SYMBOLS[d]))}"></i>${i === N_DIGITS ? 'check' : 'digit ' + i}: ${d}</div>`)
+                    .join('');
+                document.getElementById('codec-info').textContent = `${id} = ${digits.slice(0, -1).reverse().join('')} in base 6 → ${digits.length} pairs, ${digits.length * 3} frames`;
+                return digits;
+            };
+            input.addEventListener('input', render);
+            render();
+            document.getElementById('play').addEventListener('click', () => {
+                clearInterval(timer);
+                const digits = render();
+                // Same frame order as light_tests/blink_led_id.py: A, B, white flash per digit.
+                const frames = digits.flatMap((d, i) => [[SYMBOLS[d], i], [inv(SYMBOLS[d]), i], [[1, 1, 1], i]]);
+                let f = 0;
+                timer = setInterval(() => {
+                    [...pairsEl.children].forEach((p, i) => p.classList.toggle('on', frames[f]?.[1] === i));
+                    if (f === frames.length) return clearInterval(timer), (bulb.style.background = bulb.style.boxShadow = '');
+                    bulb.style.background = css(frames[f][0]);
+                    bulb.style.boxShadow = `0 0 40px ${css(frames[f][0])}`;
+                    f++;
+                }, 450);
+            });
+
+            // Fake scan: the wire spirals up a cone with some jitter, like a hand-wrapped tree.
+            const leds = Array.from({ length: N_LEDS }, (_, i) => {
+                const t = i / N_LEDS, r = (1 - t) * 0.9 + 0.05, a = t * 9 * Math.PI * 2 + Math.sin(i * 12.9) * 0.3;
+                return { i, x: Math.cos(a) * r + Math.sin(i * 7.1) * 0.05, y: t * 2 - 1, z: Math.sin(a) * r + Math.cos(i * 3.7) * 0.05 };
+            });
+            const hsl = (h, l = 55) => `hsl(${h} 100% ${l}%)`;
+            const effects = {
+                wire: (p, t) => hsl((p.i / N_LEDS) * 360 - t * 120),
+                height: (p, t) => hsl((p.y + 1) * 180 - t * 120),
+                plane: (p, t) => (Math.abs(p.x * Math.cos(t) + p.y * Math.sin(t) * 0.8) < 0.12 ? hsl(140, 60) : hsl(0, 22)),
+                // One LED blinks at a time; the ones already "found" stay green.
+                scan: (p, t) => {
+                    const cur = Math.floor(t * 30) % N_LEDS;
+                    return p.i === cur ? '#fff' : p.i < cur ? hsl(140, 45) : '#2a2a30';
+                },
+            };
+            let fx = 'wire', yaw = 0, drag = null;
+            document.querySelectorAll('[data-fx]').forEach((b) =>
+                b.addEventListener('click', () => {
+                    fx = b.dataset.fx;
+                    document.querySelectorAll('[data-fx]').forEach((o) => o.setAttribute('aria-pressed', o === b));
+                }),
+            );
+            const canvas = document.getElementById('tree');
+            const ctx = canvas.getContext('2d');
+            canvas.addEventListener('pointerdown', (e) => ((drag = e.clientX), canvas.setPointerCapture(e.pointerId)));
+            canvas.addEventListener('pointermove', (e) => drag !== null && ((yaw += (e.clientX - drag) / 120), (drag = e.clientX)));
+            canvas.addEventListener('pointerup', () => (drag = null));
+            const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const draw = (ms) => {
+                const t = still ? 0 : ms / 1000;
+                const dpr = devicePixelRatio || 1, w = canvas.clientWidth, h = canvas.clientHeight;
+                if (canvas.width !== w * dpr) (canvas.width = w * dpr), (canvas.height = h * dpr);
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                ctx.clearRect(0, 0, w, h);
+                if (drag === null && !still) yaw += 0.004;
+                const s = Math.min(w, h) * 0.42, cos = Math.cos(yaw), sin = Math.sin(yaw);
+                leds.map((p) => ({ p, x: p.x * cos - p.z * sin, z: p.x * sin + p.z * cos }))
+                    .sort((a, b) => a.z - b.z)
+                    .forEach(({ p, x, z }) => {
+                        const k = 1 / (2.6 - z);
+                        ctx.fillStyle = effects[fx](p, t);
+                        ctx.globalAlpha = 0.45 + (z + 1) * 0.27;
+                        ctx.beginPath();
+                        ctx.arc(w / 2 + x * s * k * 1.7, h / 2 - p.y * s * k * 1.7, 4.5 * k * 1.7, 0, 7);
+                        ctx.fill();
+                    });
+                ctx.globalAlpha = 1;
+                requestAnimationFrame(draw);
+            };
+            requestAnimationFrame(draw);
+        </script>
+    </body>
+</html>

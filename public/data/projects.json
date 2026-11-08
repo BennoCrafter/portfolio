@@ -31,6 +31,21 @@
       }
     },
     {
+      "id": 14,
+      "name": "xmas-mapper",
+      "description": "Scan a Christmas tree LED string into a 3D point cloud. Reverse-engineered the encrypted Bluetooth protocol of the Govee H6871 to control every LED.",
+      "image": "/apps/xmas-mapper/detection.jpg",
+      "technologies": [
+        "Python",
+        "Bluetooth LE",
+        "OpenCV"
+      ],
+      "links": {
+        "github": "https://github.com/BennoCrafter/xmas-mapper",
+        "live": "/apps/xmas-mapper/"
+      }
+    },
+    {
       "id": 4,
       "name": "TrackStar",
       "description": "Hitster-inspired open-source game, where players guess the release year of songs to create a chronological timeline with the ability to use your own custom datasets.",
