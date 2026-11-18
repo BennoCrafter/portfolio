@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Asyar List Density — Bennowo</title>
+        <meta name="description" content="New launcher entry options in Asyar: Balanced, Dense, Comfortable and Custom list density." />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+        <meta name="theme-color" content="#0b0b0d" />
+        <style>
+            * { box-sizing: border-box; }
+            body {
+                margin: 0;
+                background: radial-gradient(1200px 600px at 20% -10%, #1a1a22, #0b0b0d 60%) #0b0b0d;
+                color: #ececf1;
+                font: 16px/1.6 Inter, system-ui, sans-serif;
+                -webkit-font-smoothing: antialiased;
+            }
+            .wrap { max-width: 1600px; margin: 0 auto; padding: 40px 16px; }
+            .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; }
+            .grid + .grid { margin-top: 48px; }
+            figure { margin: 0; }
+            img { display: block; width: 100%; height: auto; border-radius: 14px; }
+            figcaption { margin-top: 10px; font-weight: 600; text-align: center; }
+            figcaption small { display: block; font-weight: 400; color: #9a9aa5; }
+            .hint { margin: 0 0 20px; text-align: center; color: #9a9aa5; }
+            figure a { display: block; cursor: zoom-in; border-radius: 14px; }
+            figure a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+            dialog { padding: 0; border: 0; background: none; max-width: 96vw; max-height: 96vh; cursor: zoom-out; }
+            dialog::backdrop { background: rgb(0 0 0 / 0.85); }
+            dialog img { width: auto; max-width: 96vw; max-height: 96vh; }
+        </style>
+    </head>
+    <body>
+        <main class="wrap">
+            <p class="hint">Click on screenshot to expand</p>
+            <div class="grid">
+                <figure>
+                    <img src="balanced.png" alt="Asyar launcher with balanced list density" width="1590" height="1050" />
+                    <figcaption>Balanced <small>Default</small></figcaption>
+                </figure>
+                <figure>
+                    <img src="dense.png" alt="Asyar launcher with dense list density" width="1590" height="1050" />
+                    <figcaption>Dense</figcaption>
+                </figure>
+                <figure>
+                    <img src="comfortable.png" alt="Asyar launcher with comfortable list density" width="1590" height="1050" />
+                    <figcaption>Comfortable</figcaption>
+                </figure>
+                <figure>
+                    <img src="custom-sample.png" alt="Asyar launcher with custom list density" width="1590" height="1050" />
+                    <figcaption>Custom</figcaption>
+                </figure>
+            </div>
+            <div class="grid">
+                <figure>
+                    <img src="launcher-entries-options.png" alt="List density setting with a Dense preview" loading="lazy" />
+                </figure>
+                <figure>
+                    <img src="custom-config.png" alt="Custom list density sliders for row height, icon size, spacing and title size" loading="lazy" />
+                </figure>
+                <figure>
+                    <img src="new-themeselection.png" alt="Theme picker with the Default theme and a Get more themes tile" loading="lazy" />
+                </figure>
+            </div>
+        </main>
+        <dialog id="zoom"><img src="balanced.png" alt="" /></dialog>
+        <script>
+            const zoomImg = zoom.querySelector('img');
+            document.querySelectorAll('figure img').forEach((img) => {
+                const link = document.createElement('a');
+                link.href = img.src;
+                link.setAttribute('aria-label', `Expand: ${img.alt}`);
+                img.replaceWith(link);
+                link.append(img);
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    zoomImg.src = img.src;
+                    zoomImg.alt = img.alt;
+                    zoom.showModal();
+                });
+            });
+            // Esc closes natively; a click anywhere closes too
+            zoom.addEventListener('click', () => zoom.close());
+        </script>
+    </body>
+</html>
